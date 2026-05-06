@@ -1,65 +1,85 @@
 import { motion } from 'framer-motion'
 
-const SKILLS = [
-  { name: '/init',                  desc: 'Génère un CLAUDE.md à partir du repo — exécuté à chaque clone.', cat: 'core' },
-  { name: '/review',                desc: 'Review d’une PR · check tests, sécu, cohérence.',                cat: 'core' },
-  { name: '/security-review',       desc: 'Audit sécu des changements pending sur la branche.',             cat: 'core' },
-  { name: 'simplify',               desc: 'Relit ce qui vient d’être écrit · fix réutilisation, qualité.',  cat: 'meta' },
-  { name: 'fewer-permission-prompts', desc: 'Scanne tes transcripts et propose une allowlist de Bash.',     cat: 'meta' },
-  { name: 'update-config',          desc: 'Modifie settings.json · permissions · hooks · env.',             cat: 'meta' },
-  { name: 'claude-api',             desc: 'Aide à coder avec le SDK Anthropic, prompt caching inclus.',     cat: 'dev'  },
-  { name: 'loop',                   desc: 'Rejoue une tâche toutes les N min (ex: babysit PRs).',           cat: 'dev'  },
-  { name: 'opus-consultation',      desc: '[Hermes] délègue à Opus 4.7 sous classify / review / synth.',     cat: 'mine' },
+const BEFORE_AFTER = [
+  {
+    label: 'Sans skill',
+    color: 'var(--danger)',
+    bg: 'rgba(220,38,38,0.06)',
+    border: 'rgba(220,38,38,0.18)',
+    lines: [
+      'Tu ré-expliques le contexte à chaque fois.',
+      'Claude analyse la situation from scratch.',
+      'Tu obtiens une réponse générique.',
+      'Tu corriges, tu précises, tu itères.',
+    ],
+  },
+  {
+    label: 'Avec skill',
+    color: 'var(--green)',
+    bg: 'rgba(22,163,74,0.06)',
+    border: 'rgba(22,163,74,0.18)',
+    lines: [
+      'Claude reconnaît le trigger → charge le skill.',
+      'Il connaît déjà le process, les règles, le ton.',
+      'Il exécute directement, sans poser de questions.',
+      'Tu valides. C\'est tout.',
+    ],
+  },
 ]
-
-const CAT_COLOR: Record<string, string> = { core: 'clay', meta: 'purple', dev: 'cyan', mine: 'green' }
-const CAT_LABEL: Record<string, string> = { core: 'Built-in', meta: 'Méta', dev: 'Dev', mine: 'Custom (à moi)' }
 
 export function SkillsSlide() {
   return (
-    <div className="col" style={{ height: '100%' }}>
-      <span className="eyebrow"><span className="dot" /> 05 · Skills</span>
-      <h2 className="h2">Tes <span className="gradient-text">slash commands</span> — packagés, versionnés, partageables.</h2>
-      <p className="lede">
-        Un skill = un dossier <span className="mono">~/.claude/skills/&lt;nom&gt;/</span> avec un <span className="mono">SKILL.md</span> qui décrit
-        quand l’invoquer et comment. Claude le détecte tout seul via les triggers, ou tu le tapes en <span className="mono">/skill-name</span>.
-      </p>
+    <div className="col" style={{ height: '100%', justifyContent: 'center', gap: 40 }}>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <span className="eyebrow"><span className="dot" /> Skills</span>
+        <h2 className="h2" style={{ marginTop: 16 }}>
+          Décris le process <span className="gradient-text">une fois.</span>
+          <br />Claude ne l'analyse plus jamais.
+        </h2>
+      </motion.div>
 
-      <div className="grid grid-3">
-        {SKILLS.map((s, i) => (
+      <motion.p
+        className="lede"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+        style={{ fontSize: 21 }}
+      >
+        Un skill = un fichier markdown qui décrit <strong>quand agir</strong> et <strong>comment</strong>.
+        <br />Claude le charge dès que le contexte correspond — plus besoin de lui réexpliquer la logique.
+      </motion.p>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, maxWidth: 860, margin: '0 auto', width: '100%' }}>
+        {BEFORE_AFTER.map((col, ci) => (
           <motion.div
-            key={s.name}
-            className="glass card-int"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.04 * i }}
+            key={col.label}
+            className="glass"
+            initial={{ opacity: 0, x: ci === 0 ? -24 : 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.55 + ci * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              padding: 24,
+              background: col.bg,
+              border: `1px solid ${col.border}`,
+              borderRadius: 'var(--radius)',
+            }}
           >
-            <div className="row" style={{ justifyContent: 'space-between' }}>
-              <div className="mono" style={{ fontWeight: 700 }}>{s.name}</div>
-              <span className={`tag ${CAT_COLOR[s.cat]}`}>{CAT_LABEL[s.cat]}</span>
+            <div style={{ fontWeight: 700, fontSize: 15, color: col.color, marginBottom: 16 }}>{col.label}</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {col.lines.map((l) => (
+                <div key={l} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontSize: 15, lineHeight: 1.5 }}>
+                  <span style={{ color: col.color, fontWeight: 700, flexShrink: 0 }}>{ci === 0 ? '✗' : '✓'}</span>
+                  <span style={{ color: 'var(--text-dim)' }}>{l}</span>
+                </div>
+              ))}
             </div>
-            <p className="muted" style={{ fontSize: 13, marginTop: 8, lineHeight: 1.5 }}>{s.desc}</p>
           </motion.div>
         ))}
       </div>
-
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .25 }}>
-        <h3 className="h3" style={{ marginBottom: 10 }}>Anatomie d’un skill custom</h3>
-        <div className="code">
-<span className="com"># ~/.claude/skills/security-review/SKILL.md</span>{'\n'}
-<span className="key">---</span>{'\n'}
-<span className="key">name</span>: security-review{'\n'}
-<span className="key">description</span>: Audit sécu des changements pending. TRIGGER si{'\n'}
-{'  '}le user dit "review sécu", "audit sécu", ou si la branche{'\n'}
-{'  '}touche à de l'auth/crypto/SQL.{'\n'}
-<span className="key">---</span>{'\n'}{'\n'}
-<span className="com"># Procédure</span>{'\n'}
-1. <span className="fn">git diff main...HEAD</span>{'\n'}
-2. Pour chaque fichier touché : check OWASP top 10.{'\n'}
-3. Spawn un subagent Explore pour trouver les call-sites.{'\n'}
-4. Sortie : table markdown <span className="str">{'{ severity, file, line, finding, fix }'}</span>.
-        </div>
-      </motion.div>
     </div>
   )
 }

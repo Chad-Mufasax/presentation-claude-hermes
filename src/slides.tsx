@@ -7,6 +7,9 @@ import { Tip02PlanSlide } from './slides/Tip02PlanSlide'
 import { Tip03ClaudeMdSlide } from './slides/Tip03ClaudeMdSlide'
 import { Tip04BiggerModelSlide } from './slides/Tip04BiggerModelSlide'
 import { Tip05VerifySlide } from './slides/Tip05VerifySlide'
+import { ContextSlide } from './slides/ContextSlide'
+import { SkillsSlide } from './slides/SkillsSlide'
+import { SkillsAnatomySlide } from './slides/SkillsAnatomySlide'
 import { Tip06CommandsSlide } from './slides/Tip06CommandsSlide'
 import { Tip07ConnectSlide } from './slides/Tip07ConnectSlide'
 import { Tip08PhrasesSlide } from './slides/Tip08PhrasesSlide'
@@ -40,6 +43,9 @@ export const slides: Slide[] = [
   { title: 'Tip 03 · CLAUDE.md',                    render: () => <Tip03ClaudeMdSlide /> },
   { title: 'Tip 04 · Le plus gros modèle',          render: () => <Tip04BiggerModelSlide /> },
   { title: 'Tip 05 · Vérifier',                     render: () => <Tip05VerifySlide /> },
+  { title: 'Contexte',                               render: () => <ContextSlide /> },
+  { title: 'Skills',                                 render: () => <SkillsSlide /> },
+  { title: 'Skills · Anatomie',                      render: () => <SkillsAnatomySlide /> },
   { title: 'Tip 06 · Commandes',                    render: () => <Tip06CommandsSlide /> },
   { title: 'Tip 07 · Connecter',                    render: () => <Tip07ConnectSlide /> },
   { title: 'Tip 08 · Phrases magiques',             render: () => <Tip08PhrasesSlide /> },

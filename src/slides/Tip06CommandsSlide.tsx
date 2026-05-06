@@ -60,10 +60,23 @@ export function Tip06CommandsSlide() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        style={{ textAlign: 'center', fontSize: 16, color: 'var(--text-dim)', maxWidth: 700, margin: '0 auto' }}
+        className="glass"
+        style={{
+          padding: 18,
+          maxWidth: 700,
+          margin: '0 auto',
+          background: 'linear-gradient(135deg, rgba(99,102,241,0.07), rgba(234,88,12,0.04))',
+          textAlign: 'center',
+        }}
       >
-        Création : un fichier markdown dans <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>~/.claude/commands/</span>.
-        <br />C'est tout. Tu écris la procédure une fois.
+        <p style={{ fontSize: 15, margin: 0, lineHeight: 1.7 }}>
+          Une commande <strong>part d'un skill</strong> — elle en est l'invocation explicite.
+          <br />
+          <span className="muted" style={{ fontSize: 13 }}>
+            Skill = la logique décrite. Commande = le raccourci pour la déclencher manuellement via{' '}
+            <span className="mono" style={{ background: 'var(--surface-2)', padding: '1px 6px', borderRadius: 4 }}>/ma-commande</span>.
+          </span>
+        </p>
       </motion.div>
     </div>
   )
