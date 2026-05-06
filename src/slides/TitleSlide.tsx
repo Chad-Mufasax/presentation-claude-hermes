@@ -95,7 +95,7 @@ export function TitleSlide({ jump }: SlideCtx) {
         transition={{ delay: 1.4 }}
         style={{ position: 'absolute', right: 0, bottom: 0, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-mute)', letterSpacing: '.08em' }}
       >
-        20 SLIDES · ~35 MIN · CHAD · ENJOY AUTOMATION
+        26 SLIDES · ~35 MIN · CHAD · ENJOY AUTOMATION
       </motion.div>
     </div>
   )

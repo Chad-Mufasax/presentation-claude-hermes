@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { TitleSlide } from './slides/TitleSlide'
 import { TocSlide } from './slides/TocSlide'
+import { ClaudePowerSlide } from './slides/ClaudePowerSlide'
 import { Tip01ParallelSlide } from './slides/Tip01ParallelSlide'
 import { Tip02PlanSlide } from './slides/Tip02PlanSlide'
 import { Tip03ClaudeMdSlide } from './slides/Tip03ClaudeMdSlide'
@@ -19,6 +20,9 @@ import { ApplyThisWeekSlide } from './slides/ApplyThisWeekSlide'
 import { RealWorkflowSlide } from './slides/RealWorkflowSlide'
 import { TransitionSlide } from './slides/TransitionSlide'
 import { HermesIntroSlide } from './slides/HermesIntroSlide'
+import { EnjoyUseCaseSlide } from './slides/EnjoyUseCaseSlide'
+import { EnjoyUseCase2Slide } from './slides/EnjoyUseCase2Slide'
+import { RemoteDiagSlide } from './slides/RemoteDiagSlide'
 import { HermesShimSlide } from './slides/HermesShimSlide'
 import { TakeawaysSlide } from './slides/TakeawaysSlide'
 import { ThanksSlide } from './slides/ThanksSlide'
@@ -38,6 +42,7 @@ export type Slide = {
 export const slides: Slide[] = [
   { title: 'Optimiser Claude Code',                render: (c) => <TitleSlide {...c} /> },
   { title: 'Plan',                                  render: (c) => <TocSlide {...c} /> },
+  { title: 'Claude tout nu vs équipé',              render: () => <ClaudePowerSlide /> },
   { title: 'Tip 01 · Parallèle',                    render: () => <Tip01ParallelSlide /> },
   { title: 'Tip 02 · Plan avant',                   render: () => <Tip02PlanSlide /> },
   { title: 'Tip 03 · CLAUDE.md',                    render: () => <Tip03ClaudeMdSlide /> },
@@ -55,6 +60,9 @@ export const slides: Slide[] = [
   { title: 'Workflow réel',                         render: () => <RealWorkflowSlide /> },
   { title: 'Au-delà du CLI →',                      render: () => <TransitionSlide /> },
   { title: 'Hermes',                                render: () => <HermesIntroSlide /> },
+  { title: 'Cas d\'usage Enjoy · Veille',           render: () => <EnjoyUseCaseSlide /> },
+  { title: 'Cas d\'usage Enjoy · Actions',          render: () => <EnjoyUseCase2Slide /> },
+  { title: 'Diagnostic à distance',                 render: () => <RemoteDiagSlide /> },
   { title: 'Hermes ↔ sub Max (shim)',               render: () => <HermesShimSlide /> },
   { title: 'À retenir',                             render: () => <TakeawaysSlide /> },
   { title: 'Merci',                                 render: (c) => <ThanksSlide {...c} /> },
