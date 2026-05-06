@@ -2,19 +2,19 @@ import { motion } from 'framer-motion'
 
 const PHRASES = [
   {
-    p: 'Itère jusqu\'à…',
-    d: 'Au lieu d\'attendre une réponse, demande-lui de raffiner par passes successives jusqu\'à un critère mesurable.',
-    ex: '« Itère sur ce plan d\'archi auth jusqu\'à ce qu\'il tienne en 5 lignes. »',
+    p: 'Cuisine-moi…',
+    d: 'Au lieu de demander une réponse, demande qu\'il itère, raffine, peaufine.',
+    ex: '« Cuisine-moi un plan d\'archi pour ce module auth, 3 options. »',
   },
   {
-    p: 'Démontre que…',
-    d: 'Force la vérification empirique. Il doit produire la preuve par grep, par test, par exécution — pas par raisonnement seul.',
-    ex: '« Démontre que cette fonction n\'est appelée nulle part — grep tout le repo, montre la sortie. »',
+    p: 'Prouve-moi que…',
+    d: 'Force la vérification empirique. Il doit aller chercher la preuve, pas spéculer.',
+    ex: '« Prouve-moi que cette fonction n\'est appelée nulle part — grep tout le repo. »',
   },
   {
-    p: 'Repars de zéro.',
-    d: 'Quand la trajectoire dérive : reset complet, redémarre depuis la doc ou la spec, pas depuis le code en cours.',
-    ex: '« Repars de zéro. Lis la doc TypeScript sur les conditional types, oublie le code actuel. »',
+    p: 'Jette tout et refais.',
+    d: 'Quand tu pars dans le mauvais sens. Reset complet, autre angle.',
+    ex: '« Jette tout. Repars de la doc TypeScript, pas du code existant. »',
   },
 ]
 
