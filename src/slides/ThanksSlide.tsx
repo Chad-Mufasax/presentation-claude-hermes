@@ -41,7 +41,7 @@ export function ThanksSlide({ jump }: SlideCtx) {
       >
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
           <div className="mono" style={{ fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--text-mute)' }}>Contact</div>
-          <div style={{ fontSize: 18, fontWeight: 600 }}>chad@mufasax.com</div>
+          <div style={{ fontSize: 18, fontWeight: 600 }}>chade.elkurdi@enjoy-automation.com</div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
           <div className="mono" style={{ fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--text-mute)' }}>Docs Claude</div>

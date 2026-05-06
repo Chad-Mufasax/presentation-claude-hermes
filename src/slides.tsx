@@ -2,7 +2,6 @@ import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { TitleSlide } from './slides/TitleSlide'
 import { TocSlide } from './slides/TocSlide'
-import { WhatIsClaudeSlide } from './slides/WhatIsClaudeSlide'
 import { Tip01ParallelSlide } from './slides/Tip01ParallelSlide'
 import { Tip02PlanSlide } from './slides/Tip02PlanSlide'
 import { Tip03ClaudeMdSlide } from './slides/Tip03ClaudeMdSlide'
@@ -17,8 +16,7 @@ import { ApplyThisWeekSlide } from './slides/ApplyThisWeekSlide'
 import { RealWorkflowSlide } from './slides/RealWorkflowSlide'
 import { TransitionSlide } from './slides/TransitionSlide'
 import { HermesIntroSlide } from './slides/HermesIntroSlide'
-import { ProductionAtScaleSlide } from './slides/ProductionAtScaleSlide'
-import { SecurityWarningsSlide } from './slides/SecurityWarningsSlide'
+import { HermesShimSlide } from './slides/HermesShimSlide'
 import { TakeawaysSlide } from './slides/TakeawaysSlide'
 import { ThanksSlide } from './slides/ThanksSlide'
 
@@ -37,7 +35,6 @@ export type Slide = {
 export const slides: Slide[] = [
   { title: 'Optimiser Claude Code',                render: (c) => <TitleSlide {...c} /> },
   { title: 'Plan',                                  render: (c) => <TocSlide {...c} /> },
-  { title: 'Qu\'est-ce que Claude ?',               render: () => <WhatIsClaudeSlide /> },
   { title: 'Tip 01 · Parallèle',                    render: () => <Tip01ParallelSlide /> },
   { title: 'Tip 02 · Plan avant',                   render: () => <Tip02PlanSlide /> },
   { title: 'Tip 03 · CLAUDE.md',                    render: () => <Tip03ClaudeMdSlide /> },
@@ -52,8 +49,7 @@ export const slides: Slide[] = [
   { title: 'Workflow réel',                         render: () => <RealWorkflowSlide /> },
   { title: 'Au-delà du CLI →',                      render: () => <TransitionSlide /> },
   { title: 'Hermes',                                render: () => <HermesIntroSlide /> },
-  { title: 'Production at scale',                   render: () => <ProductionAtScaleSlide /> },
-  { title: 'Security warnings',                     render: () => <SecurityWarningsSlide /> },
+  { title: 'Hermes ↔ sub Max (shim)',               render: () => <HermesShimSlide /> },
   { title: 'À retenir',                             render: () => <TakeawaysSlide /> },
   { title: 'Merci',                                 render: (c) => <ThanksSlide {...c} /> },
 ]

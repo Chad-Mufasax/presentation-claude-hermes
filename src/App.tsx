@@ -59,7 +59,7 @@ export default function App() {
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             >
               {current.render({ go, jump, idx, total })}
-              <div className="credit">chad@mufasax.com · 04/2026 · clavier ← →</div>
+              <div className="credit">chade.elkurdi@enjoy-automation.com · 04/2026 · clavier ← →</div>
             </motion.section>
           </AnimatePresence>
         </main>

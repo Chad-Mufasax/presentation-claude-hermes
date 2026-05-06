@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const TASKS = [
-  { task: 'Article blog', status: 'rédaction', color: 'clay' },
-  { task: 'Présentation', status: 'design slides', color: 'purple' },
-  { task: 'Bug site web', status: 'debug', color: 'green' },
-  { task: 'Refacto API', status: 'review', color: 'warn' },
+  { task: 'Refacto auth API', status: 'extract middleware', color: 'clay' },
+  { task: 'Tests Jest', status: 'cover edge cases', color: 'purple' },
+  { task: 'Bug TS strict', status: 'fix null checks', color: 'green' },
+  { task: 'Migration Prisma', status: 'schema diff', color: 'warn' },
 ]
 
 export function Tip01ParallelSlide() {

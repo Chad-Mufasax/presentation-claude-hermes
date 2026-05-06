@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const COMMANDS = [
-  { cmd: '/email-relance', d: 'Relance cliente avec ton ton', icon: '✉️' },
-  { cmd: '/poste-linkedin', d: 'Brouillon depuis tes notes', icon: '💼' },
-  { cmd: '/standup', d: 'Récap PRs/issues du jour', icon: '📊' },
   { cmd: '/review-pr', d: 'Review systématique selon ta checklist', icon: '🔍' },
+  { cmd: '/test-cover', d: 'Génère les tests Jest manquants sur un fichier', icon: '🧪' },
+  { cmd: '/refactor', d: 'Extrait fonction pure + ajoute types stricts', icon: '🛠' },
+  { cmd: '/debug-log', d: 'Trace un bug à partir d\'un stack trace collé', icon: '🐛' },
 ]
 
 export function Tip06CommandsSlide() {
