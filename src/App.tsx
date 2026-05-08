@@ -36,13 +36,25 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey)
   }, [total])
 
+  // Tap-to-advance: click on the stage advances. Left 25% = previous,
+  // right 75% = next. Ignored on interactive elements so buttons,
+  // links, and code blocks keep working as expected on desktop.
+  function onStageClick(e: React.MouseEvent<HTMLElement>) {
+    const t = e.target as HTMLElement
+    if (t.closest('button, a, input, select, textarea, [contenteditable], code, pre, .hud')) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    if (x < rect.width * 0.25) go(-1)
+    else go(1)
+  }
+
   const pct = useMemo(() => Math.round(((idx + 1) / total) * 100), [idx, total])
 
   return (
     <>
       <div className="bg-ambient" />
       <div className="app">
-        <main className="stage">
+        <main className="stage" onClick={onStageClick}>
           <AnimatePresence mode="wait" custom={dir}>
             <motion.section
               key={idx}

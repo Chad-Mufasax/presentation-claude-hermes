@@ -494,8 +494,80 @@ ul.bullets.green li::before { background: var(--green); }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* === MOBILE === single-column, smaller text, scrollable, tap hints */
 @media (max-width: 720px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  /* allow vertical scroll on long slides instead of clipping */
+  body { overflow: auto; }
+  .app { height: auto; min-height: 100dvh; }
+  .stage {
+    padding: 16px 14px 24px;
+    min-height: calc(100dvh - 56px);
+    overflow: visible;
+    cursor: pointer;
+  }
+  .slide {
+    position: relative !important;
+    inset: auto !important;
+    gap: 16px !important;
+    height: auto !important;
+  }
+
+  /* All grids → single column */
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .flow { flex-wrap: wrap !important; gap: 8px !important; }
+
+  /* Type scale */
+  .h1, .title { font-size: clamp(36px, 9vw, 48px) !important; line-height: 1.1 !important; }
+  .h2 { font-size: clamp(22px, 5.5vw, 28px) !important; line-height: 1.2 !important; }
+  .h3 { font-size: 14px !important; }
+  .lede { font-size: 14px !important; line-height: 1.5 !important; }
+  .eyebrow { font-size: 10px !important; }
+
+  /* Cards / glass blocks: tighter */
+  .glass, .card-int { padding: 12px !important; }
+  .stat .v { font-size: clamp(20px, 5vw, 28px) !important; }
+  .stat .l { font-size: 11px !important; }
+
+  /* Code blocks: scroll horizontally rather than wrap into nothing */
+  pre.code, .terminal-block {
+    font-size: 10.5px !important;
+    overflow-x: auto !important;
+    max-width: 100%;
+  }
+
+  /* Hide the slide-title in the HUD on small screens (keep idx/progress/buttons) */
+  .hud .meta:nth-of-type(2) { display: none !important; }
+  .hud { padding: 8px 12px !important; gap: 10px !important; }
+  .hud button { padding: 6px 10px !important; font-size: 12px !important; }
+
+  /* Footer credit shrinks too */
+  .credit { font-size: 9px !important; left: 14px; bottom: 10px; }
+
+  /* Pipeline nodes shrink */
+  .node { padding: 8px 10px !important; }
+  .node .t { font-size: 11px !important; }
+  .node .v { font-size: 10px !important; }
+  .arrow { font-size: 14px !important; }
+
+  /* Title flair blobs smaller so they don't dominate */
+  .title-flair .blob { filter: blur(60px) !important; opacity: .35 !important; }
+
+  /* Tap-zone visual hint (subtle, only first time) */
+  .stage::before, .stage::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 25%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s;
+    background: linear-gradient(90deg, rgba(234,88,12,0.08), transparent);
+    z-index: 5;
+  }
+  .stage::before { left: 0; }
+  .stage::after { right: 0; transform: scaleX(-1); }
+  .stage:active::before, .stage:active::after { opacity: 1; }
 }
 
 /* Title slide bg flair */
