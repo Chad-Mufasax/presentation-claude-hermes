@@ -59,7 +59,7 @@ export default function App() {
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             >
               {current.render({ go, jump, idx, total })}
-              <div className="credit">chade.elkurdi@enjoy-automation.com · 04/2026 · clavier ← →</div>
+              <div className="credit">chad@mufasax.com · 05/2026 · keyboard ← →</div>
             </motion.section>
           </AnimatePresence>
         </main>
@@ -71,9 +71,9 @@ export default function App() {
           </div>
           <span className="meta" style={{ minWidth: 220, textAlign: 'right' }}>{current.title}</span>
           <div className="nav">
-            <button onClick={() => jump(0)} disabled={idx === 0} title="Début">⏮</button>
-            <button onClick={() => go(-1)} disabled={idx === 0}>← Préc.</button>
-            <button onClick={() => go(1)} disabled={idx === total - 1}>Suiv. →</button>
+            <button onClick={() => jump(0)} disabled={idx === 0} title="Start">⏮</button>
+            <button onClick={() => go(-1)} disabled={idx === 0}>← Prev</button>
+            <button onClick={() => go(1)} disabled={idx === total - 1}>Next →</button>
           </div>
         </nav>
       </div>

@@ -2,44 +2,41 @@ import { motion } from 'framer-motion'
 
 const ARCHI = [
   {
-    label: 'Hermes Ubuntu',
-    sub: 'the only non-Windows · claude installed natively',
+    label: 'Hermes',
+    sub: 'Linux · claude CLI installed · holds .pem key',
     os: '🐧 Linux',
     osColor: 'green',
-    link: 'SSH (OpenSSH client)',
+    link: 'SSH staging.mufasax.com (-i staging.pem)',
   },
   {
-    label: 'Windows jump VM',
-    sub: 'OpenSSH server enabled (Windows Server 2019+)',
-    os: '🪟 Windows',
-    osColor: 'cyan',
-    link: 'Invoke-Command via WinRM · ports 5985/5986',
+    label: 'Staging EC2',
+    sub: 'Ubuntu 22.04 · docker compose · 9 microservices',
+    os: '🐧 Linux',
+    osColor: 'green',
+    link: 'docker logs / docker exec on the right container',
   },
   {
-    label: 'Client Windows machine',
-    sub: 'the one that freezes, logs, needs diagnosing',
-    os: '🪟 Windows',
+    label: 'mufasax-backend container',
+    sub: 'NestJS · structured JSON logs to stdout',
+    os: '🐳 Docker',
     osColor: 'cyan',
     link: null,
   },
 ]
 
-const SKILL_CODE = `ssh prod-bastion -- powershell -Command "
-  \\$cred = Import-Clixml C:\\creds\\$client.xml
-  Invoke-Command -ComputerName host14.$client.local \\
-                 -Credential \\$cred -ScriptBlock {
-    Get-WinEvent -LogName Application -MaxEvents 100 |
-      Where { \\$_.LevelDisplayName -eq 'Error' } |
-      Select TimeCreated, ProviderName, Message |
-      ConvertTo-Json
-  }
+const SKILL_CODE = `ssh -i ~/.ssh/mufasax-staging.pem \\
+    ubuntu@staging.mufasax.com -- "
+  docker logs --since 2h --tail 5000 mufasax-backend 2>&1 \\
+    | grep -E 'userNumber.{0,3}492|userId.{0,3}492' \\
+    | tail -100 \\
+    | jq -R 'fromjson? // .'
 "`
 
 const COMMANDS = [
-  { cmd: 'mx: host <name> logs',     desc: 'Last 100 Application/System errors from the machine' },
-  { cmd: 'mx: host <name> services', desc: 'Status of critical Windows services (WCS Agent, etc.)' },
-  { cmd: 'mx: host <name> disk',     desc: 'Disk space, CPU/RAM load, top 10 processes' },
-  { cmd: 'mx: host <name> diag',     desc: 'Full diagnostic, Opus synthesizes + proposes action' },
+  { cmd: 'mx: user <id> tx',     desc: 'Last 20 transactions of the user (status, amount, provider)' },
+  { cmd: 'mx: user <id> logs',   desc: 'Backend logs mentioning the user, last 2h, parsed' },
+  { cmd: 'mx: user <id> wallet', desc: 'Current wallet state (mobile money + crypto reserves)' },
+  { cmd: 'mx: user <id> diag',   desc: 'Full diagnostic — Opus synthesizes + proposes action' },
 ]
 
 export function RemoteDiagSlide() {
@@ -48,7 +45,7 @@ export function RemoteDiagSlide() {
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
         <span className="eyebrow"><span className="dot" /> 22 · Remote diagnostic</span>
         <h2 className="h2" style={{ marginTop: 8 }}>
-          Read a client machine's logs <span className="gradient-text">1500 km away</span>, in 20 seconds.
+          <span className="gradient-text">"User 492 didn't receive his transaction"</span> — find out why in 30s.
         </h2>
       </motion.div>
 
@@ -63,15 +60,15 @@ export function RemoteDiagSlide() {
       >
         <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6 }}>
           <strong style={{ color: 'var(--accent)', fontSize: 16 }}>Hermes has no eyes, just a terminal.</strong><br />
-          To read logs, <strong>no visual RDP needed</strong>. The RDP your ops team uses is for
-          their eyes. Hermes takes the <strong>admin path</strong> — SSH + WinRM —
-          faster, more reliable, traceable. All without a GUI.
+          Support pings: a user complains. Instead of asking dev to SSH staging, grep logs, find the
+          provider that 502'd — Hermes does it itself in 30s. <strong>SSH + docker logs</strong>,
+          structured JSON in, hypothesis out. Audit-trailed, reproducible.
         </p>
       </motion.div>
 
       <div className="grid grid-2" style={{ gap: 18, alignItems: 'start' }}>
         <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
-          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>① The architecture — 3 hops, 1 Linux only</h3>
+          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>① The architecture — SSH then docker</h3>
           <div className="col" style={{ gap: 0 }}>
             {ARCHI.map((s, i) => (
               <div key={s.label}>
@@ -140,10 +137,10 @@ export function RemoteDiagSlide() {
 {SKILL_CODE}
           </pre>
           <p className="muted" style={{ fontSize: 11, marginTop: 8, lineHeight: 1.5 }}>
-            <strong style={{ color: 'var(--text)' }}>~10 lines of shell.</strong> SSH into the jump,
-            the jump runs <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 5px', borderRadius: 4 }}>Invoke-Command</code> on
-            the target, <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 5px', borderRadius: 4 }}>Get-WinEvent</code> returns
-            JSON. Opus synthesizes.
+            <strong style={{ color: 'var(--text)' }}>~5 lines of shell.</strong> SSH into staging EC2,
+            <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 5px', borderRadius: 4 }}>docker logs</code> on
+            the backend container, grep the userNumber, parse JSON with
+            <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 5px', borderRadius: 4 }}>jq</code>. Opus synthesizes.
           </p>
         </motion.div>
       </div>
@@ -176,7 +173,7 @@ export function RemoteDiagSlide() {
               fontFamily: 'var(--font-mono)',
             }}
           >
-            mx: host acme-14 frozen
+            mx: user 492 transaction missing
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -192,13 +189,14 @@ export function RemoteDiagSlide() {
               lineHeight: 1.55,
             }}
           >
-            🔍 <strong>Host 14 (Acme)</strong> — 24h log analysis<br /><br />
-            🔴 12 <code>OPC-UA timeout</code> errors since 14:22<br />
-            🔴 3 hard reboots (kernel power 41)<br />
-            ⚠ Disk C: 95% full<br /><br />
-            <em>Hypothesis: disk full → swap saturated → WCS freeze.</em><br />
-            Action: clean C:\Temp + restart service.<br />
-            Reply <code>go</code> to execute.
+            🔍 <strong>User 492</strong> (+221 78 480 26 96) — 2h log scan<br /><br />
+            🔴 1 transaction failed at 14:32 — <code>TX-3847</code> · 5,000 XOF<br />
+            🔴 Sycapay callback → <code>502 Service Unavailable</code><br />
+            ⚠ No retry (queue maxAttempts=1)<br />
+            ⚠ User wallet debited but not credited<br /><br />
+            <em>Hypothesis: Sycapay was down 14:30-14:35, transaction lost.</em><br />
+            Action: refund TX-3847 + bump maxAttempts to 3.<br />
+            Reply <code>go</code> to refund.
           </motion.div>
         </motion.div>
 
@@ -260,7 +258,7 @@ export function RemoteDiagSlide() {
             <p className="muted" style={{ fontSize: 11.5, lineHeight: 1.5, marginTop: 6 }}>
               The <strong style={{ color: 'var(--text)' }}>raw facts</strong> pulled from logs.
               No interpretation. Just numbers, error codes, timestamps.
-              <br /><em style={{ color: 'rgba(120,180,255,0.85)' }}>"12 OPC-UA errors since 14:22, disk 95%, 3 hard reboots"</em>
+              <br /><em style={{ color: 'rgba(120,180,255,0.85)' }}>"TX-3847 failed at 14:32, Sycapay 502, no retry"</em>
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.7 }}>
@@ -268,14 +266,14 @@ export function RemoteDiagSlide() {
             <p className="muted" style={{ fontSize: 11.5, lineHeight: 1.5, marginTop: 6 }}>
               Opus <strong style={{ color: 'var(--text)' }}>connects the facts</strong> and proposes the
               likely cause. Stays explicit about uncertainty.
-              <br /><em style={{ color: 'rgba(180,140,255,0.85)' }}>"Disk full → swap saturated → WCS freeze — likely but to confirm"</em>
+              <br /><em style={{ color: 'rgba(180,140,255,0.85)' }}>"Sycapay was down 14:30-14:35, no retry → user funds lost"</em>
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.8 }}>
             <span className="tag green" style={{ fontSize: 11 }}>③ Call-to-action</span>
             <p className="muted" style={{ fontSize: 11.5, lineHeight: 1.5, marginTop: 6 }}>
               Proposed action + command to confirm.
-              <br /><em style={{ color: 'rgba(140,220,160,0.85)' }}>"Reply 'go' to execute"</em>
+              <br /><em style={{ color: 'rgba(140,220,160,0.85)' }}>"Refund TX-3847 + bump maxAttempts. Reply 'go'."</em>
               <br /><span style={{ fontSize: 10.5, fontStyle: 'italic', color: 'var(--text-mute)' }}>
                 Later: a fixer agent takes over if no human is online. First tested with human validation.
               </span>
