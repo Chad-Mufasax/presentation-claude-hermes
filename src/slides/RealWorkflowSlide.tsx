@@ -1,23 +1,23 @@
 import { motion } from 'framer-motion'
 
 const STEPS = [
-  { n: 1, title: 'Symptom', body: 'Memory leak en prod : Node process passe de 200MB → 2GB en 6h. Crash OOM toutes les nuits sur le worker queue.', color: 'clay' },
-  { n: 2, title: 'Reproduce', body: 'node --inspect + Chrome DevTools → heap snapshot toutes les 30 min. Diff montre EventEmitter listeners qui grimpent linéairement.', color: 'cyan' },
-  { n: 3, title: 'Trace listeners', body: 'grep "on(" + "addListener" sur tout le repo. 3 candidats. Claude isole queue.service.ts:on(\'job:done\', cb) appelé à chaque retry.', color: 'cyan' },
-  { n: 4, title: 'Root cause', body: 'Listener ré-attaché à chaque retry sans removeListener. Bull queue retry x10 par job → 10 callbacks pour 1 event → 10× CPU + leak refs.', color: 'purple' },
-  { n: 5, title: 'Fix', body: 'Remplace .on() par .once() + cleanup explicite dans le finally. Edit + tsc clean en 2 min. Test unit sur queue mock pour lock le comportement.', color: 'green' },
-  { n: 6, title: 'Verify', body: 'Run worker 1h en local avec heap snapshot toutes les 5 min. Mémoire stable à 210MB. Listeners count = 1, pas N. Tests baseline pass.', color: 'green' },
-  { n: 7, title: 'PR + deploy', body: 'gh pr create avec heap snapshot before/after en screenshot. Review merge → deploy. Monitor Datadog 24h → mémoire flat. Plus de crash OOM.', color: 'green' },
+  { n: 1, title: 'Symptom', body: 'Memory leak in prod: Node process climbs from 200MB → 2GB in 6h. Worker queue crashes OOM every night.', color: 'clay' },
+  { n: 2, title: 'Reproduce', body: 'node --inspect + Chrome DevTools → heap snapshot every 30 min. Diff shows EventEmitter listeners climbing linearly.', color: 'cyan' },
+  { n: 3, title: 'Trace listeners', body: 'grep "on(" + "addListener" across the repo. 3 candidates. Claude isolates queue.service.ts:on(\'job:done\', cb) re-attached on every retry.', color: 'cyan' },
+  { n: 4, title: 'Root cause', body: 'Listener re-attached on every retry without removeListener. Bull queue retries x10 per job → 10 callbacks per event → 10× CPU + leaked refs.', color: 'purple' },
+  { n: 5, title: 'Fix', body: 'Replace .on() with .once() + explicit cleanup in finally. Edit + tsc clean in 2 min. Unit test on queue mock to lock the behavior.', color: 'green' },
+  { n: 6, title: 'Verify', body: 'Run worker 1h locally with heap snapshot every 5 min. Memory steady at 210MB. Listener count = 1, not N. Baseline tests pass.', color: 'green' },
+  { n: 7, title: 'PR + deploy', body: 'gh pr create with before/after heap snapshots. Reviewer merges → deploy. Monitor Datadog 24h → memory flat. No more OOM crashes.', color: 'green' },
 ]
 
 export function RealWorkflowSlide() {
   return (
     <div className="col" style={{ height: '100%' }}>
-      <span className="eyebrow"><span className="dot" /> 12 · Workflow réel</span>
-      <h2 className="h2">Cas concret — <span className="gradient-text">memory leak Node, fix en 1 boucle</span>.</h2>
+      <span className="eyebrow"><span className="dot" /> 12 · Real workflow</span>
+      <h2 className="h2">Real case — <span className="gradient-text">Node memory leak, fixed in one loop</span>.</h2>
       <p className="lede">
-        Worker prod qui crash OOM toutes les nuits. Claude Code (heap snapshot, grep, fix, test) le ferme en ~40 min vs 2 jours de debug à l'aveugle.
-        Voici les 7 étapes — toutes dans une seule session interactive.
+        Prod worker crashes OOM every night. Claude Code (heap snapshot, grep, fix, test) closes it in ~40 min vs 2 days of blind debugging.
+        Here are the 7 steps — all in a single interactive session.
       </p>
 
       <div className="col" style={{ gap: 8, marginTop: 8 }}>
@@ -40,24 +40,24 @@ export function RealWorkflowSlide() {
       </div>
 
       <motion.div className="glass" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-        <h3 className="h3" style={{ marginBottom: 10 }}>Ce qui a fonctionné</h3>
+        <h3 className="h3" style={{ marginBottom: 10 }}>What worked</h3>
         <div className="grid grid-3">
           <div>
             <span className="tag green">📊 Heap diff</span>
             <p className="muted" style={{ fontSize: 13, marginTop: 6 }}>
-              Snapshot before/after via Chrome DevTools = preuve empirique. Pas de "je crois que" — la stack te montre le coupable.
+              Before/after snapshot via Chrome DevTools = empirical proof. No "I think" — the stack shows the culprit.
             </p>
           </div>
           <div>
-            <span className="tag cyan">🔁 Boucle serrée</span>
+            <span className="tag cyan">🔁 Tight loop</span>
             <p className="muted" style={{ fontSize: 13, marginTop: 6 }}>
-              grep → edit → tsc → unit test → re-run worker. Chaque étape feedback en &lt;30s, dans la même session.
+              grep → edit → tsc → unit test → re-run worker. Each step gives feedback in &lt;30s, all in the same session.
             </p>
           </div>
           <div>
-            <span className="tag purple">🛡 Test pour locker</span>
+            <span className="tag purple">🛡 Lock with a test</span>
             <p className="muted" style={{ fontSize: 13, marginTop: 6 }}>
-              Avant deploy : test unit qui assert listenerCount === 1. Le bug ne reviendra plus, même si quelqu'un refacto.
+              Before deploy: unit test asserting listenerCount === 1. Bug won't come back, even if someone refactors.
             </p>
           </div>
         </div>
@@ -68,7 +68,7 @@ export function RealWorkflowSlide() {
           <div className="stat"><div className="v">40min</div><div className="l">Claude Code direct</div></div>
         </div>
         <div className="glass">
-          <div className="stat"><div className="v">2 jours</div><div className="l">debug manuel estimé</div></div>
+          <div className="stat"><div className="v">2 days</div><div className="l">manual debug estimate</div></div>
         </div>
         <div className="glass">
           <div className="stat"><div className="v">210MB</div><div className="l">stable post-fix vs 2GB</div></div>

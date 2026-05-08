@@ -10,40 +10,40 @@ const PIPELINE_STEPS = [
 
 const TRANSFORMATIONS = [
   {
-    title: 'Aplatir l\'historique',
-    body: 'claude --print stream-json ne lit qu\'UN message. Le shim fusionne les N tours en un seul user message structuré (Previous conversation / Current).',
+    title: 'Flatten history',
+    body: 'claude --print stream-json only reads ONE message. The shim folds N turns into a single structured user message (Previous conversation / Current).',
   },
   {
-    title: 'Tools en system prompt',
-    body: 'Anthropic API a tools=[]. claude CLI ne sait pas en accepter. Le shim sérialise les 29 tools en instructions + balises <hermes_tool_use> à parser au retour.',
+    title: 'Tools into system prompt',
+    body: 'Anthropic API takes tools=[]. claude CLI does not. The shim serializes the 29 tools as instructions + <hermes_tool_use> tags to parse on the way back.',
   },
   {
-    title: 'Tempfile si > 8 KB',
-    body: 'argv système plafonne. Quand le system + tools dépasse 8 KB, le shim écrit un fichier temp et passe --append-system-prompt-file au lieu de l\'argv.',
+    title: 'Tempfile when > 8 KB',
+    body: 'argv has a hard limit. When system + tools exceeds 8 KB, the shim writes a temp file and passes --append-system-prompt-file instead of argv.',
   },
   {
-    title: 'Isolation totale',
-    body: '--strict-mcp-config --setting-sources "" --tools "" : on neutralise plugins, MCP, CLAUDE.md auto-discovery. Opus ne voit QUE les tools Hermes injectés.',
+    title: 'Total isolation',
+    body: '--strict-mcp-config --setting-sources "" --tools "" : we neutralize plugins, MCP, CLAUDE.md auto-discovery. Opus only sees the injected Hermes tools.',
   },
   {
-    title: 'Stderr drain concurrent',
-    body: 'Pipe Unix sature à 64 KB. asyncio.task draine stderr en parallèle de stdout. Sans ça, claude crash silencieux quand verbose.',
+    title: 'Concurrent stderr drain',
+    body: 'Unix pipes saturate at 64 KB. An asyncio.task drains stderr in parallel with stdout. Without it, claude crashes silently in verbose mode.',
   },
   {
-    title: 'Re-traduction tool_use',
-    body: 'Le shim parse <hermes_tool_use>{...}</hermes_tool_use> dans la réponse Opus, reconstruit des blocks tool_use Anthropic natifs, stop_reason=tool_use.',
+    title: 'Tool_use re-translation',
+    body: 'The shim parses <hermes_tool_use>{...}</hermes_tool_use> in Opus output, rebuilds native Anthropic tool_use blocks, stop_reason=tool_use.',
   },
 ]
 
 export function HermesShimSlide() {
   return (
     <div className="col" style={{ height: '100%' }}>
-      <span className="eyebrow"><span className="dot" /> 18 · Hermes ↔ sub Max</span>
-      <h2 className="h2">Le shim — <span className="gradient-text">250 lignes Python</span> qui fait passer Hermes par ma sub.</h2>
+      <span className="eyebrow"><span className="dot" /> 18 · Hermes ↔ Max sub</span>
+      <h2 className="h2">The shim — <span className="gradient-text">250 lines of Python</span> that route Hermes through my sub.</h2>
       <p className="lede">
-        Avant : Hermes appelait l'API Anthropic en direct → facturé per token (Haiku $1/$5 par M tok).
-        Après : un proxy local lance le binaire <code style={{ background: 'rgba(255,255,255,0.06)', padding: '2px 6px', borderRadius: 4 }}>claude -p</code> en
-        subprocess → Anthropic voit l'outil officiel → <strong style={{ color: 'var(--accent)' }}>quota Max regular</strong>, $0 token.
+        Before: Hermes called the Anthropic API directly → billed per token (Haiku $1/$5 per M tok).
+        After: a local proxy spawns the <code style={{ background: 'rgba(255,255,255,0.06)', padding: '2px 6px', borderRadius: 4 }}>claude -p</code> binary
+        as a subprocess → Anthropic sees the official tool → <strong style={{ color: 'var(--accent)' }}>Max regular quota</strong>, $0 per token.
       </p>
 
       <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
@@ -65,13 +65,13 @@ export function HermesShimSlide() {
           ))}
         </div>
         <p className="muted" style={{ fontSize: 12, marginTop: 8, fontStyle: 'italic' }}>
-          Pourquoi ça marche : Anthropic regarde le User-Agent. <code>claude-cli/2.1.128</code> = "outil officiel"
-          → quota Max. Un SDK tiers (meridian) = "third-party" → forcé en extra usage payant depuis avril 2026.
+          Why it works: Anthropic looks at the User-Agent. <code>claude-cli/2.1.128</code> = "official tool"
+          → Max quota. A third-party SDK (e.g. meridian) = "third-party" → forced into paid extra usage since April 2026.
         </p>
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.25 }}>
-        <h3 className="h3" style={{ marginBottom: 10 }}>Les 6 transformations qu'effectue le shim</h3>
+        <h3 className="h3" style={{ marginBottom: 10 }}>The 6 transformations the shim performs</h3>
         <div className="grid grid-3" style={{ gap: 10 }}>
           {TRANSFORMATIONS.map((t, i) => (
             <motion.div
@@ -91,16 +91,16 @@ export function HermesShimSlide() {
 
       <div className="grid grid-4" style={{ marginTop: 8, gap: 10 }}>
         <div className="glass">
-          <div className="stat"><div className="v">$0</div><div className="l">par message Telegram</div></div>
+          <div className="stat"><div className="v">$0</div><div className="l">per Telegram message</div></div>
         </div>
         <div className="glass">
-          <div className="stat"><div className="v">Opus 4.7</div><div className="l">partout, sub Max</div></div>
+          <div className="stat"><div className="v">Opus 4.7</div><div className="l">everywhere, Max sub</div></div>
         </div>
         <div className="glass">
-          <div className="stat"><div className="v">~250 lignes</div><div className="l">Python (1 fichier)</div></div>
+          <div className="stat"><div className="v">~250 lines</div><div className="l">Python (1 file)</div></div>
         </div>
         <div className="glass">
-          <div className="stat"><div className="v">launchd</div><div className="l">auto-restart au boot</div></div>
+          <div className="stat"><div className="v">launchd</div><div className="l">auto-restart at boot</div></div>
         </div>
       </div>
     </div>

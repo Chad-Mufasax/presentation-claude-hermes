@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const FEATURES = [
-  { icon: '📱', title: 'Telegram-first', body: 'Ton bot parle 17 plateformes. Un seul process.' },
-  { icon: '🧠', title: 'Mémoire persistante', body: 'Faits, prefs, contexte conservés entre sessions.' },
-  { icon: '⏰', title: 'Cron natif', body: 'Schedule en français: "tous les matins à 7h, brief moi".' },
-  { icon: '🤖', title: 'Multi-agents', body: 'Plusieurs profiles spécialisés, kanban coordination.' },
+  { icon: '📱', title: 'Telegram-first', body: 'Your bot speaks 17 platforms. One process.' },
+  { icon: '🧠', title: 'Persistent memory', body: 'Facts, prefs, context preserved across sessions.' },
+  { icon: '⏰', title: 'Native cron', body: 'Schedule in plain English: "every morning at 7am, brief me".' },
+  { icon: '🤖', title: 'Multi-agent', body: 'Multiple specialized profiles, kanban coordination.' },
 ]
 
 export function HermesIntroSlide() {
@@ -17,7 +17,7 @@ export function HermesIntroSlide() {
       >
         <span className="eyebrow"><span className="dot" /> 17 · Hermes</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Quand le terminal ne suffit plus.
+          When the terminal isn't enough.
         </h2>
       </motion.div>
 
@@ -27,8 +27,8 @@ export function HermesIntroSlide() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.5 }}
       >
-        Claude Code = excellent dans une session interactive. Mais quand tu veux que Claude bosse <strong style={{ color: 'var(--accent)' }}>pendant que tu dors</strong>,
-        envoie sur Telegram, surveille des crons — il faut un orchestrateur. C'est <strong style={{ color: 'var(--accent)' }}>Hermes</strong>.
+        Claude Code = excellent in an interactive session. But when you want Claude working <strong style={{ color: 'var(--accent)' }}>while you sleep</strong>,
+        pinging Telegram, watching crons — you need an orchestrator. That's <strong style={{ color: 'var(--accent)' }}>Hermes</strong>.
       </motion.p>
 
       <div className="grid grid-4" style={{ gap: 18 }}>
@@ -66,7 +66,7 @@ export function HermesIntroSlide() {
         </div>
         <div className="stat" style={{ textAlign: 'center' }}>
           <div className="v">17</div>
-          <div className="l">plateformes</div>
+          <div className="l">platforms</div>
         </div>
         <div className="stat" style={{ textAlign: 'center' }}>
           <div className="v">$0</div>

@@ -19,7 +19,7 @@ export function ThanksSlide({ jump }: SlideCtx) {
           className="title"
           style={{ fontSize: 'clamp(80px, 12vw, 160px)' }}
         >
-          <span className="gradient-text">Merci.</span>
+          <span className="gradient-text">Thanks.</span>
         </motion.h1>
       </motion.div>
 
@@ -30,7 +30,7 @@ export function ThanksSlide({ jump }: SlideCtx) {
         transition={{ delay: 0.6 }}
         style={{ fontSize: 'clamp(20px, 2vw, 28px)', maxWidth: '50ch' }}
       >
-        Questions sur Claude Code, Hermes, MCP, subagents, ou architecture — on peut creuser n'importe quel sujet.
+        Questions on Claude Code, Hermes, MCP, subagents, or architecture — happy to dig into anything.
       </motion.p>
 
       <motion.div
@@ -41,10 +41,10 @@ export function ThanksSlide({ jump }: SlideCtx) {
       >
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
           <div className="mono" style={{ fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--text-mute)' }}>Contact</div>
-          <div style={{ fontSize: 18, fontWeight: 600 }}>chade.elkurdi@enjoy-automation.com</div>
+          <div style={{ fontSize: 18, fontWeight: 600 }}>chad@mufasax.com</div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-          <div className="mono" style={{ fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--text-mute)' }}>Docs Claude</div>
+          <div className="mono" style={{ fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--text-mute)' }}>Claude docs</div>
           <div style={{ fontSize: 18, fontWeight: 600 }}>docs.claude.com</div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
@@ -73,7 +73,7 @@ export function ThanksSlide({ jump }: SlideCtx) {
           marginTop: 8,
         }}
       >
-        ⏮ Retour au début
+        ⏮ Back to start
       </motion.button>
     </div>
   )

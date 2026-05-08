@@ -10,7 +10,7 @@ export function Tip04BiggerModelSlide() {
       >
         <span className="eyebrow"><span className="dot" /> Tip 04</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Prends le <span className="gradient-text">plus gros modèle</span>.
+          Use the <span className="gradient-text">biggest model</span>.
         </h2>
       </motion.div>
 
@@ -21,8 +21,8 @@ export function Tip04BiggerModelSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22 }}
       >
-        Pour les tâches complexes : <strong style={{ color: 'var(--accent)' }}>Opus + thinking activé</strong>.
-        <br />Le coût en plus se rentabilise en 1 itération évitée.
+        For complex tasks: <strong style={{ color: 'var(--accent)' }}>Opus + thinking enabled</strong>.
+        <br />The extra cost pays off in one avoided iteration.
       </motion.p>
 
       <div style={{ display: 'flex', gap: 20, justifyContent: 'center', alignItems: 'flex-end' }}>
@@ -47,7 +47,7 @@ export function Tip04BiggerModelSlide() {
           }}>
             Haiku
           </div>
-          <div style={{ fontSize: 12, color: 'var(--text-mute)' }}>rapide, low-cost</div>
+          <div style={{ fontSize: 12, color: 'var(--text-mute)' }}>fast, low-cost</div>
         </motion.div>
 
         <motion.div
@@ -72,7 +72,7 @@ export function Tip04BiggerModelSlide() {
           }}>
             Sonnet
           </div>
-          <div style={{ fontSize: 12, color: 'var(--text-mute)' }}>équilibré</div>
+          <div style={{ fontSize: 12, color: 'var(--text-mute)' }}>balanced</div>
         </motion.div>
 
         <motion.div
@@ -107,7 +107,7 @@ export function Tip04BiggerModelSlide() {
             Opus
             <div style={{ fontSize: 13, fontWeight: 500, opacity: 0.9, marginTop: 8 }}>+ thinking 🧠</div>
           </motion.div>
-          <div style={{ fontSize: 13, color: 'var(--accent)', fontWeight: 700 }}>← prends celui-là</div>
+          <div style={{ fontSize: 13, color: 'var(--accent)', fontWeight: 700 }}>← pick this one</div>
         </motion.div>
       </div>
 
@@ -119,9 +119,9 @@ export function Tip04BiggerModelSlide() {
         style={{ padding: 20, textAlign: 'center', maxWidth: 700, margin: '0 auto' }}
       >
         <p style={{ fontSize: 16, margin: 0, lineHeight: 1.6 }}>
-          <strong>1 réponse Opus juste</strong> &gt; <strong>5 réponses Haiku approximatives</strong>.
+          <strong>1 correct Opus answer</strong> &gt; <strong>5 sloppy Haiku answers</strong>.
           <br />
-          <span className="muted" style={{ fontSize: 13 }}>Sur Max ($20/mo) tu y as droit dans la limite.</span>
+          <span className="muted" style={{ fontSize: 13 }}>On Max ($20/mo) you get it within the quota.</span>
         </p>
       </motion.div>
     </div>

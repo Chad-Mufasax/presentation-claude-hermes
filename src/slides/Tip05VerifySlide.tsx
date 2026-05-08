@@ -10,7 +10,7 @@ export function Tip05VerifySlide() {
       >
         <span className="eyebrow"><span className="dot" /> Tip 05</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Donne-lui les <span className="gradient-text">moyens de vérifier</span>.
+          Give him the <span className="gradient-text">means to verify</span>.
         </h2>
       </motion.div>
 
@@ -21,16 +21,16 @@ export function Tip05VerifySlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22 }}
       >
-        Sans feedback, Claude code à l'aveugle.
-        <br />Donne-lui un moyen de <strong style={{ color: 'var(--accent)' }}>voir le résultat</strong>.
+        Without feedback, Claude codes blind.
+        <br />Give him a way to <strong style={{ color: 'var(--accent)' }}>see the result</strong>.
       </motion.p>
 
       <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', maxWidth: 1100, margin: '0 auto' }}>
         {[
-          { icon: '🧪', t: 'Tests', d: 'npm test, pytest. Il les lance, voit ce qui passe.' },
-          { icon: '🌐', t: 'Browser', d: 'Extension Chrome → screenshot de la page rendue.' },
-          { icon: '📋', t: 'Logs', d: 'Pipe-lui ta sortie d\'erreur. Il debug à partir du vrai output.' },
-          { icon: '🔍', t: 'Type-check', d: 'tsc, mypy. La compile lui dit si ça passe.' },
+          { icon: '🧪', t: 'Tests', d: 'npm test, pytest. He runs them, sees what passes.' },
+          { icon: '🌐', t: 'Browser', d: 'Chrome extension → screenshot of the rendered page.' },
+          { icon: '📋', t: 'Logs', d: 'Pipe him your error output. He debugs from the real output.' },
+          { icon: '🔍', t: 'Type-check', d: 'tsc, mypy. The compiler tells him if it passes.' },
         ].map((c, i) => (
           <motion.div
             key={c.t}
@@ -67,9 +67,9 @@ export function Tip05VerifySlide() {
         }}
       >
         <p style={{ fontSize: 17, margin: 0, lineHeight: 1.5 }}>
-          <strong style={{ color: 'var(--green)' }}>Règle d'or</strong> : si tu peux le vérifier, lui aussi.
+          <strong style={{ color: 'var(--green)' }}>Golden rule</strong>: if you can verify it, so can he.
           <br />
-          <span className="muted" style={{ fontSize: 14 }}>UI ? screenshot. API ? curl. Code ? lint + test.</span>
+          <span className="muted" style={{ fontSize: 14 }}>UI? screenshot. API? curl. Code? lint + test.</span>
         </p>
       </motion.div>
     </div>

@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 
 const TOOLS = [
-  { icon: '💬', name: 'Slack', d: 'Cherche, résume, poste' },
-  { icon: '✉️', name: 'Gmail', d: 'Lit, drafts, classe' },
-  { icon: '📝', name: 'Notion', d: 'Crée pages, recherche' },
-  { icon: '📅', name: 'Calendar', d: 'Vérifie, planifie' },
-  { icon: '📁', name: 'Drive', d: 'Lit, crée, partage' },
+  { icon: '💬', name: 'Slack', d: 'Search, summarize, post' },
+  { icon: '✉️', name: 'Gmail', d: 'Read, draft, sort' },
+  { icon: '📝', name: 'Notion', d: 'Create pages, search' },
+  { icon: '📅', name: 'Calendar', d: 'Check, schedule' },
+  { icon: '📁', name: 'Drive', d: 'Read, create, share' },
   { icon: '🐙', name: 'GitHub', d: 'PRs, issues, commits' },
 ]
 
@@ -19,7 +19,7 @@ export function Tip07ConnectSlide() {
       >
         <span className="eyebrow"><span className="dot" /> Tip 07</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Connecte tes <span className="gradient-text">outils du quotidien</span>.
+          Connect your <span className="gradient-text">daily tools</span>.
         </h2>
       </motion.div>
 
@@ -31,7 +31,7 @@ export function Tip07ConnectSlide() {
         style={{ fontSize: 22 }}
       >
         Slack, Gmail, Notion, Calendar… via <strong style={{ color: 'var(--accent)' }}>MCP</strong>.
-        <br />Claude lit ton vrai contexte. Plus de copier-coller.
+        <br />Claude reads your real context. No more copy-paste.
       </motion.p>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', maxWidth: 900, margin: '0 auto' }}>
@@ -77,9 +77,9 @@ export function Tip07ConnectSlide() {
         }}
       >
         <p style={{ fontSize: 16, margin: 0, lineHeight: 1.6 }}>
-          <em>« Résume mon thread Slack #incidents et drafte un postmortem dans Notion. »</em>
+          <em>"Summarize my Slack #incidents thread and draft a postmortem in Notion."</em>
           <br />
-          <span className="muted" style={{ fontSize: 13 }}>Une seule commande. 3 outils. 2 minutes.</span>
+          <span className="muted" style={{ fontSize: 13 }}>One command. 3 tools. 2 minutes.</span>
         </p>
       </motion.div>
     </div>

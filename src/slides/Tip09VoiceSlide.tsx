@@ -10,7 +10,7 @@ export function Tip09VoiceSlide() {
       >
         <span className="eyebrow"><span className="dot" /> Tip 09</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          <span className="gradient-text">Parle</span>, ne tape plus.
+          <span className="gradient-text">Talk</span>, stop typing.
         </h2>
       </motion.div>
 
@@ -21,8 +21,8 @@ export function Tip09VoiceSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22 }}
       >
-        Tu réfléchis 3× plus vite à voix haute qu'au clavier.
-        <br />Sur Mac, double-tape <span className="mono" style={{ background: 'var(--surface-2)', padding: '4px 12px', borderRadius: 8, fontSize: 18 }}>fn</span> → dictée native.
+        You think 3× faster out loud than on a keyboard.
+        <br />On Mac, double-tap <span className="mono" style={{ background: 'var(--surface-2)', padding: '4px 12px', borderRadius: 8, fontSize: 18 }}>fn</span> → native dictation.
       </motion.p>
 
       <div style={{ display: 'flex', gap: 32, justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -80,13 +80,13 @@ export function Tip09VoiceSlide() {
           style={{ padding: 24, maxWidth: 380 }}
         >
           <div style={{ fontSize: 14, color: 'var(--accent)', letterSpacing: '.1em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 12 }}>
-            Avantages
+            Benefits
           </div>
           <ul style={{ margin: 0, paddingLeft: 20, lineHeight: 1.9, fontSize: 15 }}>
-            <li>Tu décris plus de contexte, plus vite</li>
-            <li>Tu penses à voix haute, ça structure</li>
-            <li>Tu utilises Claude en marchant</li>
-            <li>Plus de fatigue clavier sur les longs prompts</li>
+            <li>You describe more context, faster</li>
+            <li>Thinking out loud structures your thought</li>
+            <li>You use Claude while walking</li>
+            <li>No more keyboard fatigue on long prompts</li>
           </ul>
         </motion.div>
       </div>
@@ -97,7 +97,7 @@ export function Tip09VoiceSlide() {
         transition={{ delay: 1.3 }}
         style={{ textAlign: 'center', fontSize: 16, color: 'var(--text-dim)' }}
       >
-        💡 Réglage Mac: <em>Préférences Système → Clavier → Dictée → activer</em>
+        💡 Mac setup: <em>System Preferences → Keyboard → Dictation → enable</em>
       </motion.div>
     </div>
   )

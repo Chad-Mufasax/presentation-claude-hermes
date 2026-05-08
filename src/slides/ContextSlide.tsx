@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const ITEMS = [
-  { icon: '📏', t: '/compact', d: 'Claude résume toute la session en un bloc dense. Garde le fil, libère la fenêtre.' },
-  { icon: '🧹', t: '/clear',   d: 'Repart de zéro. Idéal entre deux sujets sans rapport.' },
-  { icon: '📌', t: 'CLAUDE.md', d: 'Le contexte permanent. Lu à chaque session — pas besoin de le répéter.' },
-  { icon: '🧠', t: 'Memory',   d: 'Faits clés sur toi et le projet — persistent d\'une session à l\'autre.' },
+  { icon: '📏', t: '/compact', d: 'Claude condenses the whole session into one dense block. Keeps the thread, frees the window.' },
+  { icon: '🧹', t: '/clear',   d: 'Start fresh. Perfect between two unrelated topics.' },
+  { icon: '📌', t: 'CLAUDE.md', d: 'Permanent context. Loaded every session — no need to repeat yourself.' },
+  { icon: '🧠', t: 'Memory',   d: 'Key facts about you and the project — they persist across sessions.' },
 ]
 
 export function ContextSlide() {
@@ -15,9 +15,9 @@ export function ContextSlide() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="eyebrow"><span className="dot" /> Contexte</span>
+        <span className="eyebrow"><span className="dot" /> Context</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          La fenêtre se remplit — <span className="gradient-text">gère-la.</span>
+          The window fills up — <span className="gradient-text">manage it.</span>
         </h2>
       </motion.div>
 
@@ -28,8 +28,8 @@ export function ContextSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22 }}
       >
-        Le contexte = la mémoire de la session.
-        <br />Quand il sature, la qualité chute. Deux réflexes suffisent.
+        Context = session memory.
+        <br />When it saturates, quality drops. Two reflexes are enough.
       </motion.p>
 
       <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', maxWidth: 1100, margin: '0 auto' }}>
@@ -69,8 +69,8 @@ export function ContextSlide() {
         }}
       >
         <p style={{ fontSize: 17, margin: 0, lineHeight: 1.5 }}>
-          <strong style={{ color: 'var(--indigo)' }}>À suivre →</strong>{' '}
-          Les skills : capitaliser les workflows répétitifs en commandes réutilisables.
+          <strong style={{ color: 'var(--indigo)' }}>Next up →</strong>{' '}
+          Skills: turn repetitive workflows into reusable commands.
         </p>
       </motion.div>
     </div>

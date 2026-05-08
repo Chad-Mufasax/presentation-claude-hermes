@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
 
 const POINTS = [
-  { num: 1, t: 'Le modèle ≠ l\'outil', d: 'Claude est l\'ampoule. Le harness — CLAUDE.md, hooks, MCP, subagents — c\'est tout le reste.' },
-  { num: 2, t: 'Capitalise dans CLAUDE.md', d: 'Chaque incident → règle. Chaque pattern répété → skill. Ta dette pédagogique devient permanent.' },
-  { num: 3, t: 'Subagents pour le bruit', d: 'Recherche, review, exploration → délégués. Le parent reste compact, focused, propre.' },
-  { num: 4, t: 'Plan avant code', d: 'Plan mode + TaskCreate. 5 min de design = 1h non gaspillée à débugger des hypothèses.' },
-  { num: 5, t: 'Hermes pour le 24/7', d: 'Quand le terminal ne suffit plus. Cron + Telegram + multi-agent + mémoire persistante.' },
-  { num: 6, t: 'Garde l\'humain dans la boucle', d: 'Aucune action destructive sans validation. Pas de auto-merge. Pas de auto-deploy prod.' },
+  { num: 1, t: 'The model ≠ the tool', d: 'Claude is the bulb. The harness — CLAUDE.md, hooks, MCP, subagents — is everything else.' },
+  { num: 2, t: 'Capitalize in CLAUDE.md', d: 'Every incident → rule. Every repeated pattern → skill. Your teaching debt becomes permanent.' },
+  { num: 3, t: 'Subagents for the noise', d: 'Search, review, exploration → delegated. The parent stays compact, focused, clean.' },
+  { num: 4, t: 'Plan before code', d: 'Plan mode + TaskCreate. 5 min of design = 1h not wasted debugging assumptions.' },
+  { num: 5, t: 'Hermes for 24/7', d: 'When the terminal isn\'t enough. Cron + Telegram + multi-agent + persistent memory.' },
+  { num: 6, t: 'Keep the human in the loop', d: 'No destructive action without approval. No auto-merge. No auto-deploy to prod.' },
 ]
 
 export function TakeawaysSlide() {
@@ -17,9 +17,9 @@ export function TakeawaysSlide() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="eyebrow"><span className="dot" /> 26 · À retenir</span>
+        <span className="eyebrow"><span className="dot" /> 26 · Takeaways</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          6 idées à <span className="gradient-text">repartir avec</span>.
+          6 ideas to <span className="gradient-text">walk away with</span>.
         </h2>
       </motion.div>
 
@@ -67,8 +67,8 @@ export function TakeawaysSlide() {
         }}
       >
         <p style={{ fontSize: 20, lineHeight: 1.5, margin: 0, fontWeight: 500 }}>
-          La question n'est plus <em>"est-ce que l'IA peut le faire?"</em>.<br />
-          C'est <span className="gradient-text">"à quelle vitesse je peux la cabler à mon contexte ?"</span>
+          The question isn't <em>"can AI do it?"</em> anymore.<br />
+          It's <span className="gradient-text">"how fast can I wire it into my context?"</span>
         </p>
       </motion.div>
     </div>

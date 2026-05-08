@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const STEPS = [
-  { n: 1, t: 'Tu décris', d: 'Ce que tu veux. Sans détail technique.' },
-  { n: 2, t: 'Claude propose', d: 'Son plan. Étape par étape.' },
-  { n: 3, t: 'Tu valides', d: 'Ou tu corriges. Avant qu\'il code.' },
-  { n: 4, t: 'Il exécute', d: 'Bon résultat en 1 fois. Pas 5 allers-retours.' },
+  { n: 1, t: 'You describe', d: 'What you want. No technical details.' },
+  { n: 2, t: 'Claude proposes', d: 'His plan. Step by step.' },
+  { n: 3, t: 'You approve', d: 'Or you correct. Before he codes.' },
+  { n: 4, t: 'He executes', d: 'Right result first try. Not 5 round-trips.' },
 ]
 
 export function Tip02PlanSlide() {
@@ -17,7 +17,7 @@ export function Tip02PlanSlide() {
       >
         <span className="eyebrow"><span className="dot" /> Tip 02</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Toujours <span className="gradient-text">un plan</span> avant.
+          Always <span className="gradient-text">a plan</span> first.
         </h2>
       </motion.div>
 
@@ -28,8 +28,8 @@ export function Tip02PlanSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22 }}
       >
-        Avant que Claude exécute, demande-lui ce qu'il <em>va</em> faire.
-        Tu valides, tu corriges, ensuite il code.
+        Before Claude executes, ask him what he's <em>going</em> to do.
+        You approve, you correct, then he codes.
       </motion.p>
 
       <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -87,7 +87,7 @@ export function Tip02PlanSlide() {
         transition={{ delay: 1.3 }}
         style={{ textAlign: 'center', fontSize: 16, color: 'var(--text-dim)' }}
       >
-        💡 Astuce: appuie sur <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>shift+tab</span> pour activer <strong>Plan Mode</strong>
+        💡 Tip: press <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>shift+tab</span> to enable <strong>Plan Mode</strong>
       </motion.div>
     </div>
   )

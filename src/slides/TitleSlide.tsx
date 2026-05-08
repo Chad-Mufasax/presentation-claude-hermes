@@ -16,7 +16,7 @@ export function TitleSlide({ jump }: SlideCtx) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: .1, duration: .5 }}
       >
-        <span className="dot" /> Présentation interne · Mai 2026
+        <span className="dot" /> Internal talk · May 2026
       </motion.div>
 
       <div>
@@ -34,7 +34,7 @@ export function TitleSlide({ jump }: SlideCtx) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: .4, duration: .7, ease: [0.2, 0.7, 0.2, 1] }}
         >
-          de novice à orchestrateur
+          from novice to orchestrator
         </motion.h1>
       </div>
 
@@ -44,8 +44,8 @@ export function TitleSlide({ jump }: SlideCtx) {
         animate={{ opacity: 1 }}
         transition={{ delay: .7, duration: .5 }}
       >
-        Les patterns, hooks, MCP servers et workflows réels que j'utilise au quotidien.
-        Plus une introduction à <strong style={{ color: 'var(--accent)' }}>Hermes</strong> — l'orchestrateur qui pousse Claude Code au-delà du terminal.
+        The patterns, hooks, MCP servers and real workflows I use daily.
+        Plus an intro to <strong style={{ color: 'var(--accent)' }}>Hermes</strong> — the orchestrator that pushes Claude Code beyond the terminal.
       </motion.p>
 
       <motion.div
@@ -82,10 +82,10 @@ export function TitleSlide({ jump }: SlideCtx) {
             boxShadow: '0 12px 32px rgba(234, 88, 12, 0.3)',
           }}
         >
-          Commencer →
+          Start →
         </motion.button>
         <span className="muted mono" style={{ fontSize: 12 }}>
-          ou tape <span style={{ border: '1px solid var(--border)', padding: '2px 8px', borderRadius: 6, background: 'var(--surface)' }}>→</span>
+          or press <span style={{ border: '1px solid var(--border)', padding: '2px 8px', borderRadius: 6, background: 'var(--surface)' }}>→</span>
         </span>
       </motion.div>
 
@@ -95,7 +95,7 @@ export function TitleSlide({ jump }: SlideCtx) {
         transition={{ delay: 1.4 }}
         style={{ position: 'absolute', right: 0, bottom: 0, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-mute)', letterSpacing: '.08em' }}
       >
-        26 SLIDES · ~35 MIN · CHAD · ENJOY AUTOMATION
+        26 SLIDES · ~35 MIN · CHAD · MUFASAX
       </motion.div>
     </div>
   )

@@ -41,7 +41,7 @@ export function TransitionSlide() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <span className="dot" /> Partie 3 · Industrialiser
+        <span className="dot" /> Part 3 · Industrialize
       </motion.div>
 
       <motion.h2
@@ -57,8 +57,8 @@ export function TransitionSlide() {
           maxWidth: '20ch',
         }}
       >
-        Et si Claude<br />
-        ne s'arrêtait <span className="gradient-text">jamais</span> ?
+        What if Claude<br />
+        <span className="gradient-text">never</span> stopped?
       </motion.h2>
 
       <motion.p
@@ -68,8 +68,8 @@ export function TransitionSlide() {
         className="lede"
         style={{ fontSize: 'clamp(18px, 1.7vw, 24px)', maxWidth: '60ch' }}
       >
-        Pas <em>session-bounded</em>. Pas <em>terminal-only</em>. Un vrai collègue qui te ping sur Telegram quand un cron casse,
-        review tes PRs pendant la nuit, et te briefe le matin.
+        Not <em>session-bounded</em>. Not <em>terminal-only</em>. A real teammate who pings you on Telegram when a cron breaks,
+        reviews your PRs overnight, and briefs you in the morning.
       </motion.p>
 
       <motion.div

@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion'
 
 const RING = [
-  { icon: '🧠', label: 'CLAUDE.md', d: 'Mémoire projet permanente' },
+  { icon: '🧠', label: 'CLAUDE.md', d: 'Persistent project memory' },
   { icon: '🛠', label: 'Tools', d: 'Read · Edit · Bash · Grep · Web' },
-  { icon: '🎯', label: 'Skills', d: 'Procédures réutilisables' },
-  { icon: '🪝', label: 'Hooks', d: 'Automation pré/post tool' },
+  { icon: '🎯', label: 'Skills', d: 'Reusable procedures' },
+  { icon: '🪝', label: 'Hooks', d: 'Pre/post tool automation' },
   { icon: '🔌', label: 'MCP', d: 'Notion · GitHub · Drive · custom' },
-  { icon: '📋', label: 'Plan mode', d: 'Dry-run avant exécution' },
-  { icon: '🤖', label: 'Subagents', d: 'Parallélisation isolée' },
-  { icon: '⚡', label: 'Slash cmds', d: 'Raccourci vers une skill' },
+  { icon: '📋', label: 'Plan mode', d: 'Dry-run before execution' },
+  { icon: '🤖', label: 'Subagents', d: 'Isolated parallelization' },
+  { icon: '⚡', label: 'Slash cmds', d: 'Shortcut to a skill' },
 ]
 
 const POSITIONS = [
@@ -30,12 +30,12 @@ export function ClaudePowerSlide() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="eyebrow"><span className="dot" /> Avant les tips</span>
+        <span className="eyebrow"><span className="dot" /> Before the tips</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Claude <span style={{ textDecoration: 'line-through', color: 'var(--text-mute)', fontWeight: 600 }}>tout nu</span> vs <span className="gradient-text">Claude équipé</span>.
+          Claude <span style={{ textDecoration: 'line-through', color: 'var(--text-mute)', fontWeight: 600 }}>naked</span> vs <span className="gradient-text">Claude loaded</span>.
         </h2>
         <p className="lede" style={{ marginTop: 12 }}>
-          Si tu copies/colles depuis le chat web, tu touches ~10% du potentiel. Voici tout ce qu'il y a derrière Claude Code.
+          If you copy/paste from the web chat, you're using ~10% of the potential. Here's everything packed into Claude Code.
         </p>
       </motion.div>
 
@@ -48,26 +48,26 @@ export function ClaudePowerSlide() {
         >
           <div className="glass" style={{ padding: 22, filter: 'grayscale(0.6)' }}>
             <div className="mono" style={{ fontSize: 11, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--text-mute)', marginBottom: 14, textAlign: 'center' }}>
-              ⛔ Mode brut · claude.ai
+              ⛔ Raw mode · claude.ai
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <div className="mono" style={{ padding: '8px 12px', background: 'var(--surface-2)', borderRadius: 6, fontSize: 12, color: 'var(--text-dim)' }}>
-                → "Comment je fix ce bug ?"
+                → "How do I fix this bug?"
               </div>
               <div style={{ textAlign: 'center', color: 'var(--text-mute)', fontSize: 14 }}>↓</div>
               <div className="mono" style={{ padding: '8px 12px', background: 'var(--surface-2)', borderRadius: 6, fontSize: 12, color: 'var(--text-dim)' }}>
-                ← "Voici un snippet…"
+                ← "Here's a snippet…"
               </div>
               <div style={{ textAlign: 'center', color: 'var(--text-mute)', fontSize: 14 }}>↓</div>
               <div className="mono" style={{ padding: '8px 12px', background: 'var(--surface-2)', borderRadius: 6, fontSize: 12, color: 'var(--text-mute)', fontStyle: 'italic' }}>
-                copier · coller · re-prompter
+                copy · paste · re-prompt
               </div>
             </div>
             <div style={{ marginTop: 18, fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.6, borderTop: '1px solid var(--border)', paddingTop: 14 }}>
-              <div>✗ Pas de mémoire entre sessions</div>
-              <div>✗ Pas d'accès au repo</div>
-              <div>✗ Pas d'outils (read · edit · bash)</div>
-              <div>✗ Pas de boucle (test → fix → verify)</div>
+              <div>✗ No memory across sessions</div>
+              <div>✗ No repo access</div>
+              <div>✗ No tools (read · edit · bash)</div>
+              <div>✗ No loop (test → fix → verify)</div>
             </div>
           </div>
         </motion.div>
@@ -158,7 +158,7 @@ export function ClaudePowerSlide() {
         transition={{ delay: 1.2 }}
         style={{ textAlign: 'center', fontSize: 14, color: 'var(--text-dim)' }}
       >
-        💡 Tout ça est <strong>activable depuis le terminal</strong>. Pas besoin d'API, pas de plombage. Juste <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>claude</span>.
+        💡 All of this is <strong>available from the terminal</strong>. No API needed, no plumbing. Just <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>claude</span>.
       </motion.div>
     </div>
   )

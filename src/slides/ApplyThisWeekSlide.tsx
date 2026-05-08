@@ -3,26 +3,26 @@ import { motion } from 'framer-motion'
 const PRIORITIES = [
   {
     n: '01',
-    t: 'Plusieurs Claude en parallèle',
-    d: 'Ouvre 3 onglets terminal. 3 sessions. Une par tâche.',
+    t: 'Multiple Claudes in parallel',
+    d: 'Open 3 terminal tabs. 3 sessions. One per task.',
     color: 'var(--accent)',
   },
   {
     n: '02',
-    t: 'Un CLAUDE.md par projet',
-    d: 'Stack, conventions, gotchas. Mis à jour à chaque erreur.',
+    t: 'One CLAUDE.md per project',
+    d: 'Stack, conventions, gotchas. Updated on every mistake.',
     color: 'var(--indigo)',
   },
   {
     n: '03',
-    t: 'Plan mode systématique',
-    d: 'shift+tab. Tu valides avant que ça code.',
+    t: 'Plan mode every time',
+    d: 'shift+tab. You approve before it codes.',
     color: 'var(--purple)',
   },
   {
     n: '04',
-    t: 'Tâches répétitives → commandes',
-    d: '/email-relance, /standup, /review-pr. Markdown, 5 min.',
+    t: 'Repetitive tasks → commands',
+    d: '/email-followup, /standup, /review-pr. Markdown, 5 min.',
     color: 'var(--green)',
   },
 ]
@@ -35,9 +35,9 @@ export function ApplyThisWeekSlide() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="eyebrow"><span className="dot" /> Cette semaine</span>
+        <span className="eyebrow"><span className="dot" /> This week</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Si tu retiens <span className="gradient-text">4 trucs</span>, c'est ça.
+          If you remember <span className="gradient-text">4 things</span>, make it these.
         </h2>
       </motion.div>
 
@@ -48,7 +48,7 @@ export function ApplyThisWeekSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22, maxWidth: '60ch' }}
       >
-        Le reste, c'est du bonus. Ces 4 changent ton quotidien <strong style={{ color: 'var(--accent)' }}>dès cette semaine</strong>.
+        The rest is bonus. These 4 change your daily flow <strong style={{ color: 'var(--accent)' }}>starting this week</strong>.
       </motion.p>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 18, maxWidth: 1000, margin: '0 auto', width: '100%' }}>
@@ -102,7 +102,7 @@ export function ApplyThisWeekSlide() {
         }}
       >
         <p style={{ fontSize: 17, margin: 0, lineHeight: 1.5 }}>
-          <strong>Le reste</strong> (voix, mobile, MCP, phrases magiques) — tu y reviendras quand tu seras à l'aise sur ces 4-là.
+          <strong>The rest</strong> (voice, mobile, MCP, magic phrases) — come back to it once you're comfortable with these 4.
         </p>
       </motion.div>
     </div>

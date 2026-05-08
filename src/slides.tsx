@@ -20,8 +20,8 @@ import { ApplyThisWeekSlide } from './slides/ApplyThisWeekSlide'
 import { RealWorkflowSlide } from './slides/RealWorkflowSlide'
 import { TransitionSlide } from './slides/TransitionSlide'
 import { HermesIntroSlide } from './slides/HermesIntroSlide'
-import { EnjoyUseCaseSlide } from './slides/EnjoyUseCaseSlide'
-import { EnjoyUseCase2Slide } from './slides/EnjoyUseCase2Slide'
+import { DevWatchSlide } from './slides/DevWatchSlide'
+import { DevActionsSlide } from './slides/DevActionsSlide'
 import { RemoteDiagSlide } from './slides/RemoteDiagSlide'
 import { HermesShimSlide } from './slides/HermesShimSlide'
 import { TakeawaysSlide } from './slides/TakeawaysSlide'
@@ -60,8 +60,8 @@ export const slides: Slide[] = [
   { title: 'Workflow réel',                         render: () => <RealWorkflowSlide /> },
   { title: 'Au-delà du CLI →',                      render: () => <TransitionSlide /> },
   { title: 'Hermes',                                render: () => <HermesIntroSlide /> },
-  { title: 'Cas d\'usage Enjoy · Veille',           render: () => <EnjoyUseCaseSlide /> },
-  { title: 'Cas d\'usage Enjoy · Actions',          render: () => <EnjoyUseCase2Slide /> },
+  { title: 'Dev use cases · Watch',                 render: () => <DevWatchSlide /> },
+  { title: 'Dev use cases · Actions',               render: () => <DevActionsSlide /> },
   { title: 'Diagnostic à distance',                 render: () => <RemoteDiagSlide /> },
   { title: 'Hermes ↔ sub Max (shim)',               render: () => <HermesShimSlide /> },
   { title: 'À retenir',                             render: () => <TakeawaysSlide /> },

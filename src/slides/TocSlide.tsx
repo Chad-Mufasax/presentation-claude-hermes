@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 import type { SlideCtx } from '../slides'
 
 const PARTS = [
-  { num: 1, title: 'Comprendre', desc: 'Claude Code en 1 slide', range: '03', color: 'clay' },
-  { num: 2, title: '10 tips concrets', desc: 'À appliquer dès cette semaine', range: '04-13', color: 'purple' },
-  { num: 3, title: 'Aller plus loin', desc: 'Hermes : Claude qui ne dort jamais', range: '15-19', color: 'green' },
+  { num: 1, title: 'Understand', desc: 'Claude Code in 1 slide', range: '03', color: 'clay' },
+  { num: 2, title: '10 concrete tips', desc: 'Apply them this week', range: '04-13', color: 'purple' },
+  { num: 3, title: 'Go further', desc: 'Hermes: the Claude that never sleeps', range: '15-19', color: 'green' },
 ]
 
 export function TocSlide({ jump }: SlideCtx) {
@@ -15,9 +15,9 @@ export function TocSlide({ jump }: SlideCtx) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="eyebrow"><span className="dot" /> Plan</span>
+        <span className="eyebrow"><span className="dot" /> Agenda</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          3 temps. <span className="gradient-text">30 minutes.</span>
+          3 parts. <span className="gradient-text">30 minutes.</span>
         </h2>
       </motion.div>
 
@@ -72,7 +72,7 @@ export function TocSlide({ jump }: SlideCtx) {
         transition={{ delay: 1, duration: 0.5 }}
         style={{ fontSize: 13, textAlign: 'center', letterSpacing: '.1em' }}
       >
-        clic sur un bloc pour sauter · → pour avancer slide par slide
+        click a block to jump · → to step through slides
       </motion.p>
     </div>
   )

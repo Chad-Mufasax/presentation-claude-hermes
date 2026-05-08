@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const TASKS = [
-  { task: 'Refacto auth API', status: 'extract middleware', color: 'clay' },
-  { task: 'Tests Jest', status: 'cover edge cases', color: 'purple' },
-  { task: 'Bug TS strict', status: 'fix null checks', color: 'green' },
-  { task: 'Migration Prisma', status: 'schema diff', color: 'warn' },
+  { task: 'Refactor auth API', status: 'extract middleware', color: 'clay' },
+  { task: 'Jest tests', status: 'cover edge cases', color: 'purple' },
+  { task: 'TS strict bug', status: 'fix null checks', color: 'green' },
+  { task: 'Prisma migration', status: 'schema diff', color: 'warn' },
 ]
 
 export function Tip01ParallelSlide() {
@@ -17,7 +17,7 @@ export function Tip01ParallelSlide() {
       >
         <span className="eyebrow"><span className="dot" /> Tip 01</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Lance <span className="gradient-text">3 à 5 Claude</span> en parallèle.
+          Run <span className="gradient-text">3 to 5 Claudes</span> in parallel.
         </h2>
       </motion.div>
 
@@ -28,9 +28,9 @@ export function Tip01ParallelSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22 }}
       >
-        Pendant qu'un rédige ton article, un autre prépare ta présentation, un troisième débugue ton site. Tu passes de l'un à l'autre.
+        While one writes your article, another preps your slides, a third debugs your site. You jump between them.
         <br /><br />
-        <strong style={{ color: 'var(--accent)' }}>C'est <em>le</em> truc qui change tout selon Boris.</strong>
+        <strong style={{ color: 'var(--accent)' }}>According to Boris, this is <em>the</em> thing that changes everything.</strong>
       </motion.p>
 
       <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -80,7 +80,7 @@ export function Tip01ParallelSlide() {
         transition={{ delay: 1.2 }}
         style={{ textAlign: 'center', fontSize: 16, color: 'var(--text-dim)' }}
       >
-        💡 Astuce: <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>cmd+T</span> ouvre un nouveau terminal · une session Claude par tab
+        💡 Tip: <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>cmd+T</span> opens a new terminal · one Claude session per tab
       </motion.div>
     </div>
   )

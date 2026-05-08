@@ -8,10 +8,10 @@ export function SkillsAnatomySlide() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="eyebrow"><span className="dot" /> Skills · Anatomie</span>
+        <span className="eyebrow"><span className="dot" /> Skills · Anatomy</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Un fichier markdown.<br />
-          <span className="gradient-text">C'est tout ce qu'il faut.</span>
+          One markdown file.<br />
+          <span className="gradient-text">That's all it takes.</span>
         </h2>
       </motion.div>
 
@@ -22,11 +22,11 @@ export function SkillsAnatomySlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 21 }}
       >
-        Tu décris le trigger et la procédure une fois dans{' '}
+        Describe the trigger and the procedure once in{' '}
         <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>
-          ~/.claude/skills/&lt;nom&gt;/SKILL.md
+          ~/.claude/skills/&lt;name&gt;/SKILL.md
         </span>.
-        <br />Claude s'en charge dès que la situation correspond.
+        <br />Claude handles it whenever the situation matches.
       </motion.p>
 
       <motion.div
@@ -38,13 +38,13 @@ export function SkillsAnatomySlide() {
         <div className="code" style={{ fontSize: 14, lineHeight: 1.8 }}>
 <span className="key">---</span>{'\n'}
 <span className="key">name</span>: review-pr{'\n'}
-<span className="key">description</span>: <span className="str">Review une PR. TRIGGER si le user dit "review",{'\n'}{'  '}"regarde la PR", ou ouvre un lien github.com/pulls.</span>{'\n'}
+<span className="key">description</span>: <span className="str">Review a PR. TRIGGER when the user says "review",{'\n'}{'  '}"look at the PR", or opens a github.com/pulls link.</span>{'\n'}
 <span className="key">---</span>{'\n'}
 {'\n'}
-<span className="com"># Procédure</span>{'\n'}
-{'1. '}git diff main...HEAD <span className="com">→ liste les fichiers touchés</span>{'\n'}
-{'2. '}Pour chaque fichier : check OWASP top 10 + couverture test{'\n'}
-{'3. '}Sortie : table <span className="str">{'{ severity · fichier · finding · fix suggéré }'}</span>
+<span className="com"># Procedure</span>{'\n'}
+{'1. '}git diff main...HEAD <span className="com">→ list touched files</span>{'\n'}
+{'2. '}For each file: check OWASP top 10 + test coverage{'\n'}
+{'3. '}Output: table <span className="str">{'{ severity · file · finding · suggested fix }'}</span>
         </div>
       </motion.div>
 
@@ -63,11 +63,11 @@ export function SkillsAnatomySlide() {
         }}
       >
         <p style={{ fontSize: 16, margin: 0, lineHeight: 1.6 }}>
-          <strong style={{ color: 'var(--indigo)' }}>Clé :</strong>{' '}
-          la section <span className="mono">description</span> dit à Claude <em>quand</em> charger le skill — pas besoin de le taper.
+          <strong style={{ color: 'var(--indigo)' }}>Key:</strong>{' '}
+          the <span className="mono">description</span> field tells Claude <em>when</em> to load the skill — no need to type it.
           <br />
           <span className="muted" style={{ fontSize: 13 }}>
-            Il détecte le contexte et s'active seul.
+            It detects the context and activates itself.
           </span>
         </p>
       </motion.div>

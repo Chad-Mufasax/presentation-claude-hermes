@@ -3,30 +3,30 @@ import { motion } from 'framer-motion'
 const ARCHI = [
   {
     label: 'Hermes Ubuntu',
-    sub: 'le seul non-Windows · claude installé en natif',
+    sub: 'the only non-Windows · claude installed natively',
     os: '🐧 Linux',
     osColor: 'green',
     link: 'SSH (OpenSSH client)',
   },
   {
-    label: 'VM rebond Windows',
-    sub: 'OpenSSH server activé (Windows Server 2019+)',
+    label: 'Windows jump VM',
+    sub: 'OpenSSH server enabled (Windows Server 2019+)',
     os: '🪟 Windows',
     osColor: 'cyan',
     link: 'Invoke-Command via WinRM · ports 5985/5986',
   },
   {
-    label: 'Poste client Windows',
-    sub: 'celui qui freeze, qui logue, qui faut diagnostiquer',
+    label: 'Client Windows machine',
+    sub: 'the one that freezes, logs, needs diagnosing',
     os: '🪟 Windows',
     osColor: 'cyan',
     link: null,
   },
 ]
 
-const SKILL_CODE = `ssh enjoy-rebond -- powershell -Command "
+const SKILL_CODE = `ssh prod-bastion -- powershell -Command "
   \\$cred = Import-Clixml C:\\creds\\$client.xml
-  Invoke-Command -ComputerName poste14.$client.local \\
+  Invoke-Command -ComputerName host14.$client.local \\
                  -Credential \\$cred -ScriptBlock {
     Get-WinEvent -LogName Application -MaxEvents 100 |
       Where { \\$_.LevelDisplayName -eq 'Error' } |
@@ -36,19 +36,19 @@ const SKILL_CODE = `ssh enjoy-rebond -- powershell -Command "
 "`
 
 const COMMANDS = [
-  { cmd: 'ea: client <nom> logs',     desc: '100 dernières erreurs Application/System du poste' },
-  { cmd: 'ea: client <nom> services', desc: 'État des services Windows critiques (WCS Agent, etc.)' },
-  { cmd: 'ea: client <nom> disk',     desc: 'Espace disque, charge CPU/RAM, top 10 processus' },
-  { cmd: 'ea: client <nom> diag',     desc: 'Diagnostic complet, Opus synthétise + propose action' },
+  { cmd: 'mx: host <name> logs',     desc: 'Last 100 Application/System errors from the machine' },
+  { cmd: 'mx: host <name> services', desc: 'Status of critical Windows services (WCS Agent, etc.)' },
+  { cmd: 'mx: host <name> disk',     desc: 'Disk space, CPU/RAM load, top 10 processes' },
+  { cmd: 'mx: host <name> diag',     desc: 'Full diagnostic, Opus synthesizes + proposes action' },
 ]
 
 export function RemoteDiagSlide() {
   return (
     <div className="col" style={{ height: '100%', gap: 14 }}>
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-        <span className="eyebrow"><span className="dot" /> 22 · Diagnostic à distance</span>
+        <span className="eyebrow"><span className="dot" /> 22 · Remote diagnostic</span>
         <h2 className="h2" style={{ marginTop: 8 }}>
-          Lire les logs d'un poste client à <span className="gradient-text">1500 km</span>, en 20 secondes.
+          Read a client machine's logs <span className="gradient-text">1500 km away</span>, in 20 seconds.
         </h2>
       </motion.div>
 
@@ -62,16 +62,16 @@ export function RemoteDiagSlide() {
         }}
       >
         <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6 }}>
-          <strong style={{ color: 'var(--accent)', fontSize: 16 }}>Hermes n'a pas d'yeux, il a un terminal.</strong><br />
-          Pour lire des logs, <strong>pas besoin de RDP visuel</strong>. Le RDP que font tes opérateurs
-          c'est pour leurs yeux. Hermes prend le <strong>chemin admin</strong> — SSH + WinRM —
-          plus rapide, plus fiable, traçable. Le tout sans interface graphique.
+          <strong style={{ color: 'var(--accent)', fontSize: 16 }}>Hermes has no eyes, just a terminal.</strong><br />
+          To read logs, <strong>no visual RDP needed</strong>. The RDP your ops team uses is for
+          their eyes. Hermes takes the <strong>admin path</strong> — SSH + WinRM —
+          faster, more reliable, traceable. All without a GUI.
         </p>
       </motion.div>
 
       <div className="grid grid-2" style={{ gap: 18, alignItems: 'start' }}>
         <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
-          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>① L'archi — 3 hops, 1 seul Linux</h3>
+          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>① The architecture — 3 hops, 1 Linux only</h3>
           <div className="col" style={{ gap: 0 }}>
             {ARCHI.map((s, i) => (
               <div key={s.label}>
@@ -125,7 +125,7 @@ export function RemoteDiagSlide() {
                 fontFamily: 'var(--font-mono)',
               }}
             >
-              ↑ logs JSON remontent par le même tunnel
+              ↑ JSON logs come back through the same tunnel
             </motion.div>
           </div>
         </motion.div>
@@ -135,15 +135,15 @@ export function RemoteDiagSlide() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>② La commande qu'Hermes exécute</h3>
+          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>② The command Hermes runs</h3>
           <pre className="code" style={{ fontSize: 10.5, lineHeight: 1.55, margin: 0, padding: 12 }}>
 {SKILL_CODE}
           </pre>
           <p className="muted" style={{ fontSize: 11, marginTop: 8, lineHeight: 1.5 }}>
-            <strong style={{ color: 'var(--text)' }}>~10 lignes de shell.</strong> SSH dans le rebond,
-            le rebond <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 5px', borderRadius: 4 }}>Invoke-Command</code> sur
-            le poste, <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 5px', borderRadius: 4 }}>Get-WinEvent</code> retourne
-            du JSON. Opus synthétise.
+            <strong style={{ color: 'var(--text)' }}>~10 lines of shell.</strong> SSH into the jump,
+            the jump runs <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 5px', borderRadius: 4 }}>Invoke-Command</code> on
+            the target, <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 5px', borderRadius: 4 }}>Get-WinEvent</code> returns
+            JSON. Opus synthesizes.
           </p>
         </motion.div>
       </div>
@@ -160,7 +160,7 @@ export function RemoteDiagSlide() {
             padding: 12,
           }}
         >
-          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>③ Sur Telegram — l'UX</h3>
+          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>③ On Telegram — the UX</h3>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -176,7 +176,7 @@ export function RemoteDiagSlide() {
               fontFamily: 'var(--font-mono)',
             }}
           >
-            ea: client acme poste 14 freeze
+            mx: host acme-14 frozen
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -192,13 +192,13 @@ export function RemoteDiagSlide() {
               lineHeight: 1.55,
             }}
           >
-            🔍 <strong>Poste 14 (Acme)</strong> — analyse logs 24h<br /><br />
-            🔴 12 erreurs <code>OPC-UA timeout</code> depuis 14h22<br />
-            🔴 3 redémarrages brutaux (kernel power 41)<br />
-            ⚠ Disk C: 95 % plein<br /><br />
-            <em>Hypothèse : disk plein → swap saturé → freeze WCS.</em><br />
-            Action : nettoyer C:\Temp + restart service.<br />
-            Reply <code>go</code> pour exécuter.
+            🔍 <strong>Host 14 (Acme)</strong> — 24h log analysis<br /><br />
+            🔴 12 <code>OPC-UA timeout</code> errors since 14:22<br />
+            🔴 3 hard reboots (kernel power 41)<br />
+            ⚠ Disk C: 95% full<br /><br />
+            <em>Hypothesis: disk full → swap saturated → WCS freeze.</em><br />
+            Action: clean C:\Temp + restart service.<br />
+            Reply <code>go</code> to execute.
           </motion.div>
         </motion.div>
 
@@ -209,7 +209,7 @@ export function RemoteDiagSlide() {
           transition={{ delay: 1.8 }}
           style={{ padding: 14 }}
         >
-          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>④ Comment l'utiliser</h3>
+          <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>④ How to use it</h3>
           <div className="col" style={{ gap: 6 }}>
             {COMMANDS.map((c, i) => (
               <motion.div
@@ -252,32 +252,32 @@ export function RemoteDiagSlide() {
         }}
       >
         <h3 className="h3" style={{ marginBottom: 10, fontSize: 13 }}>
-          ⑤ Comment Opus structure sa réponse — toujours 3 blocs
+          ⑤ How Opus structures its reply — always 3 blocks
         </h3>
         <div className="grid grid-3" style={{ gap: 12 }}>
           <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.6 }}>
             <span className="tag cyan" style={{ fontSize: 11 }}>① Description</span>
             <p className="muted" style={{ fontSize: 11.5, lineHeight: 1.5, marginTop: 6 }}>
-              Les <strong style={{ color: 'var(--text)' }}>faits bruts</strong> tirés des logs.
-              Pas d'interprétation. Juste les chiffres, codes erreur, timestamps.
-              <br /><em style={{ color: 'rgba(120,180,255,0.85)' }}>"12 erreurs OPC-UA depuis 14h22, disk 95 %, 3 reboots brutaux"</em>
+              The <strong style={{ color: 'var(--text)' }}>raw facts</strong> pulled from logs.
+              No interpretation. Just numbers, error codes, timestamps.
+              <br /><em style={{ color: 'rgba(120,180,255,0.85)' }}>"12 OPC-UA errors since 14:22, disk 95%, 3 hard reboots"</em>
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.7 }}>
-            <span className="tag purple" style={{ fontSize: 11 }}>② Hypothèse</span>
+            <span className="tag purple" style={{ fontSize: 11 }}>② Hypothesis</span>
             <p className="muted" style={{ fontSize: 11.5, lineHeight: 1.5, marginTop: 6 }}>
-              Opus <strong style={{ color: 'var(--text)' }}>relie les faits</strong> et propose la
-              cause probable. Reste explicite sur l'incertitude.
-              <br /><em style={{ color: 'rgba(180,140,255,0.85)' }}>"Disk plein → swap saturé → freeze WCS — probable mais à confirmer"</em>
+              Opus <strong style={{ color: 'var(--text)' }}>connects the facts</strong> and proposes the
+              likely cause. Stays explicit about uncertainty.
+              <br /><em style={{ color: 'rgba(180,140,255,0.85)' }}>"Disk full → swap saturated → WCS freeze — likely but to confirm"</em>
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.8 }}>
             <span className="tag green" style={{ fontSize: 11 }}>③ Call-to-action</span>
             <p className="muted" style={{ fontSize: 11.5, lineHeight: 1.5, marginTop: 6 }}>
-              Action proposée + commande pour valider.
-              <br /><em style={{ color: 'rgba(140,220,160,0.85)' }}>"Reply 'go' pour exécuter"</em>
+              Proposed action + command to confirm.
+              <br /><em style={{ color: 'rgba(140,220,160,0.85)' }}>"Reply 'go' to execute"</em>
               <br /><span style={{ fontSize: 10.5, fontStyle: 'italic', color: 'var(--text-mute)' }}>
-                Plus tard : un agent fixer prend la main si humain offline. D'abord testé avec validation humaine.
+                Later: a fixer agent takes over if no human is online. First tested with human validation.
               </span>
             </p>
           </motion.div>

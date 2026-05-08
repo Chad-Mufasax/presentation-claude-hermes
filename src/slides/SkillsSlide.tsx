@@ -2,27 +2,27 @@ import { motion } from 'framer-motion'
 
 const BEFORE_AFTER = [
   {
-    label: 'Sans skill',
+    label: 'Without skill',
     color: 'var(--danger)',
     bg: 'rgba(220,38,38,0.06)',
     border: 'rgba(220,38,38,0.18)',
     lines: [
-      'Tu ré-expliques le contexte à chaque fois.',
-      'Claude analyse la situation from scratch.',
-      'Tu obtiens une réponse générique.',
-      'Tu corriges, tu précises, tu itères.',
+      'You re-explain the context every time.',
+      'Claude analyzes the situation from scratch.',
+      'You get a generic answer.',
+      'You correct, clarify, iterate.',
     ],
   },
   {
-    label: 'Avec skill',
+    label: 'With skill',
     color: 'var(--green)',
     bg: 'rgba(22,163,74,0.06)',
     border: 'rgba(22,163,74,0.18)',
     lines: [
-      'Claude reconnaît le trigger → charge le skill.',
-      'Il connaît déjà le process, les règles, le ton.',
-      'Il exécute directement, sans poser de questions.',
-      'Tu valides. C\'est tout.',
+      'Claude detects the trigger → loads the skill.',
+      'It already knows the process, the rules, the tone.',
+      'It executes directly, no questions asked.',
+      'You approve. Done.',
     ],
   },
 ]
@@ -37,8 +37,8 @@ export function SkillsSlide() {
       >
         <span className="eyebrow"><span className="dot" /> Skills</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Décris le process <span className="gradient-text">une fois.</span>
-          <br />Claude ne l'analyse plus jamais.
+          Describe the process <span className="gradient-text">once.</span>
+          <br />Claude never re-analyzes it.
         </h2>
       </motion.div>
 
@@ -49,8 +49,8 @@ export function SkillsSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 21 }}
       >
-        Un skill = un fichier markdown qui décrit <strong>quand agir</strong> et <strong>comment</strong>.
-        <br />Claude le charge dès que le contexte correspond — plus besoin de lui réexpliquer la logique.
+        A skill = a markdown file that describes <strong>when to act</strong> and <strong>how</strong>.
+        <br />Claude loads it as soon as the context matches — no more re-explaining the logic.
       </motion.p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, maxWidth: 860, margin: '0 auto', width: '100%' }}>

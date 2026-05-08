@@ -10,7 +10,7 @@ export function Tip10MobileSlide() {
       >
         <span className="eyebrow"><span className="dot" /> Tip 10</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Claude <span className="gradient-text">dans ta poche</span>.
+          Claude <span className="gradient-text">in your pocket</span>.
         </h2>
       </motion.div>
 
@@ -21,8 +21,8 @@ export function Tip10MobileSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22 }}
       >
-        L'app iOS lance Claude Code à distance.
-        <br /><span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>/teleport</span> et il bosse sur <strong style={{ color: 'var(--accent)' }}>ta machine</strong> depuis ton phone.
+        The iOS app launches Claude Code remotely.
+        <br /><span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>/teleport</span> and it works on <strong style={{ color: 'var(--accent)' }}>your machine</strong> from your phone.
       </motion.p>
 
       <div style={{ display: 'flex', gap: 40, justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -64,7 +64,7 @@ export function Tip10MobileSlide() {
             <div style={{ color: 'var(--accent)' }}>{'>'} /teleport</div>
             <div style={{ color: 'var(--text-mute)', marginTop: 4 }}>connecting to mac…</div>
             <div style={{ color: 'var(--green)', marginTop: 4 }}>✓ session ready</div>
-            <div style={{ color: 'var(--text)', marginTop: 12 }}>{'>'} fix le bug du staging</div>
+            <div style={{ color: 'var(--text)', marginTop: 12 }}>{'>'} fix the staging bug</div>
             <motion.div
               animate={{ opacity: [0, 1, 0] }}
               transition={{ duration: 1, repeat: Infinity }}
@@ -82,9 +82,9 @@ export function Tip10MobileSlide() {
           style={{ maxWidth: 380, display: 'flex', flexDirection: 'column', gap: 16 }}
         >
           {[
-            { icon: '🚇', t: 'Dans le métro', d: 'Tu lances un fix. Il tourne pendant ton trajet.' },
-            { icon: '☕', t: 'En réunion', d: 'Une idée passe ? Tu la dis au tel, Claude code.' },
-            { icon: '🌙', t: 'La nuit', d: 'Pas besoin d\'ouvrir le laptop pour un hotfix urgent.' },
+            { icon: '🚇', t: 'On the subway', d: 'You kick off a fix. It runs during your commute.' },
+            { icon: '☕', t: 'In a meeting', d: 'An idea hits? Say it to your phone, Claude codes.' },
+            { icon: '🌙', t: 'At night', d: 'No need to open the laptop for an urgent hotfix.' },
           ].map((item, i) => (
             <motion.div
               key={item.t}

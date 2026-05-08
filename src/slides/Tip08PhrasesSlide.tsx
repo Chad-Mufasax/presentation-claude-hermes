@@ -2,19 +2,19 @@ import { motion } from 'framer-motion'
 
 const PHRASES = [
   {
-    p: 'Cuisine-moi…',
-    d: 'Au lieu de demander une réponse, demande qu\'il itère, raffine, peaufine.',
-    ex: '« Cuisine-moi un plan d\'archi pour ce module auth, 3 options. »',
+    p: 'Cook me up…',
+    d: 'Instead of asking for an answer, ask it to iterate, refine, polish.',
+    ex: '"Cook me up an architecture plan for this auth module, 3 options."',
   },
   {
-    p: 'Prouve-moi que…',
-    d: 'Force la vérification empirique. Il doit aller chercher la preuve, pas spéculer.',
-    ex: '« Prouve-moi que cette fonction n\'est appelée nulle part — grep tout le repo. »',
+    p: 'Prove to me that…',
+    d: 'Force empirical verification. It has to go fetch the proof, not speculate.',
+    ex: '"Prove to me this function is called nowhere — grep the whole repo."',
   },
   {
-    p: 'Jette tout et refais.',
-    d: 'Quand tu pars dans le mauvais sens. Reset complet, autre angle.',
-    ex: '« Jette tout. Repars de la doc TypeScript, pas du code existant. »',
+    p: 'Throw it all out and start over.',
+    d: 'When you\'re going the wrong way. Full reset, different angle.',
+    ex: '"Throw it all out. Restart from the TypeScript docs, not the existing code."',
   },
 ]
 
@@ -28,7 +28,7 @@ export function Tip08PhrasesSlide() {
       >
         <span className="eyebrow"><span className="dot" /> Tip 08</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          Les <span className="gradient-text">phrases magiques</span>.
+          The <span className="gradient-text">magic phrases</span>.
         </h2>
       </motion.div>
 
@@ -39,7 +39,7 @@ export function Tip08PhrasesSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22 }}
       >
-        3 formulations qui changent radicalement la qualité des réponses.
+        3 phrasings that radically change the quality of the answers.
       </motion.p>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 900, margin: '0 auto', width: '100%' }}>
@@ -71,7 +71,7 @@ export function Tip08PhrasesSlide() {
                 fontStyle: 'italic',
               }}
             >
-              « {p.p} »
+              "{p.p}"
             </motion.div>
             <div style={{ flex: 1 }}>
               <p style={{ fontSize: 15, lineHeight: 1.5, margin: 0, marginBottom: 6 }}>{p.d}</p>

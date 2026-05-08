@@ -10,7 +10,7 @@ export function Tip03ClaudeMdSlide() {
       >
         <span className="eyebrow"><span className="dot" /> Tip 03</span>
         <h2 className="h2" style={{ marginTop: 16 }}>
-          <span className="gradient-text">CLAUDE.md</span> = sa mémoire.
+          <span className="gradient-text">CLAUDE.md</span> = his memory.
         </h2>
       </motion.div>
 
@@ -21,9 +21,9 @@ export function Tip03ClaudeMdSlide() {
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ fontSize: 22 }}
       >
-        Un fichier à la racine de ton projet. Tu y écris ce qu'il faut savoir.
+        A file at the root of your project. You write what he needs to know.
         <br />
-        Claude le lit <strong style={{ color: 'var(--accent)' }}>à chaque session</strong>.
+        Claude reads it <strong style={{ color: 'var(--accent)' }}>every session</strong>.
       </motion.p>
 
       <div style={{ display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch' }}>
@@ -34,13 +34,13 @@ export function Tip03ClaudeMdSlide() {
           transition={{ delay: 0.6, duration: 0.6 }}
           style={{ padding: 28, flex: 1, maxWidth: 380 }}
         >
-          <div style={{ fontSize: 14, color: 'var(--text-mute)', marginBottom: 12, letterSpacing: '.1em', textTransform: 'uppercase' }}>Ce que tu mets dedans</div>
+          <div style={{ fontSize: 14, color: 'var(--text-mute)', marginBottom: 12, letterSpacing: '.1em', textTransform: 'uppercase' }}>What you put in it</div>
           <ul style={{ margin: 0, paddingLeft: 20, lineHeight: 1.9, fontSize: 16 }}>
-            <li>Stack technique du projet</li>
-            <li>Conventions de code</li>
-            <li>Commandes utiles (test, build, deploy)</li>
-            <li>Pièges connus / gotchas</li>
-            <li>Style préféré (commentaires, naming)</li>
+            <li>Project tech stack</li>
+            <li>Code conventions</li>
+            <li>Useful commands (test, build, deploy)</li>
+            <li>Known pitfalls / gotchas</li>
+            <li>Preferred style (comments, naming)</li>
           </ul>
         </motion.div>
 
@@ -56,10 +56,10 @@ export function Tip03ClaudeMdSlide() {
             background: 'linear-gradient(135deg, rgba(234,88,12,0.08), rgba(99,102,241,0.04))',
           }}
         >
-          <div style={{ fontSize: 14, color: 'var(--accent)', marginBottom: 12, letterSpacing: '.1em', textTransform: 'uppercase', fontWeight: 700 }}>🪄 Le hack ultime</div>
+          <div style={{ fontSize: 14, color: 'var(--accent)', marginBottom: 12, letterSpacing: '.1em', textTransform: 'uppercase', fontWeight: 700 }}>🪄 The ultimate hack</div>
           <p style={{ fontSize: 17, lineHeight: 1.6, margin: 0 }}>
-            Quand Claude se trompe :<br />
-            <em>« Mets à jour ton CLAUDE.md pour ne plus refaire cette erreur. »</em>
+            When Claude messes up:<br />
+            <em>"Update your CLAUDE.md so you never make this mistake again."</em>
           </p>
           <motion.div
             animate={{ opacity: [0.5, 1, 0.5] }}
@@ -74,7 +74,7 @@ export function Tip03ClaudeMdSlide() {
               fontStyle: 'italic',
             }}
           >
-            → il s'auto-corrige pour toujours.
+            → he self-corrects forever.
           </motion.div>
         </motion.div>
       </div>
@@ -85,7 +85,7 @@ export function Tip03ClaudeMdSlide() {
         transition={{ delay: 1.3 }}
         style={{ textAlign: 'center', fontSize: 16, color: 'var(--text-dim)' }}
       >
-        💡 Astuce: <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>/init</span> génère un CLAUDE.md initial automatiquement
+        💡 Tip: <span className="mono" style={{ background: 'var(--surface-2)', padding: '2px 8px', borderRadius: 6 }}>/init</span> auto-generates an initial CLAUDE.md
       </motion.div>
     </div>
   )
